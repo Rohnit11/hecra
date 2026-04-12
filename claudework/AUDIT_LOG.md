@@ -36,6 +36,10 @@
 | 7 | 2026-04-12 | `Kim2025_ScraperRobotsTXT.pd.pdf` | Kim, T. et al. (2025). "Scrapers Selectively Respect robots.txt Directives." IMC'25, ACM. | `notes_Kim2025_ScraperRobotsTXT.md` | Empirical measurement (3.9M requests, 36 websites, controlled experiment) |
 | 8 | 2026-04-12 | `Li2025_HumanTrustAISearch.pdf` | Li, H. & Aral, S. (2025). "Human Trust in AI Search: A Large-Scale Experiment." MIT, arXiv. | `notes_Li2025_HumanTrustAISearch.md` | Pre-registered RCT (N=4,927, 6 treatment groups) |
 | 9 | 2026-04-12 | `Yang2024_GenAICopyright.pdf` | Yang, S. A. & Zhang, A. H. (2024). "Generative AI and Copyright: A Dynamic Perspective." LBS/USC, arXiv. | `notes_Yang2024_GenAICopyright.md` | Analytical / theoretical (two-period economic model) |
+| 10 | 2026-04-07 | `ai_search_research_part2.pdf` | Compendium of 7 AI search studies (secondary summaries, not a primary paper). | `notes_ai_search_research_part2.md` | Multi-paper summary (descriptive) |
+| 11 | 2026-04-10 | `2024_Sharma_LLM-Echo-Chamber.pdf` | Sharma, N., Liao, Q. V., & Xiao, Z. (2024). "Generative Echo Chamber? Effects of LLM-Powered Search Systems on Diverse Information Seeking." CHI '24, ACM. | `notes_2024_Sharma_LLM-Echo-Chamber.md` | RCT (two between-subjects online experiments) |
+| 12 | 2026-04-10 | `2025_Padilla_LLM-Adoption.pdf` | Padilla, Lam, Lambrecht & Hollenbeck (2025). "The Impact of LLM Adoption on Online User Behavior." | `notes_2025_Padilla_LLM-Adoption.md` | Staggered Difference-in-Differences |
+| 13 | 2026-04-10 | `2025_Spatharioti_LLM-Search-Decision-Making.pdf` | Spatharioti, Rothschild, Goldstein & Hofman (2025). "Effects of LLM-based Search on Decision Making: Speed, Accuracy, and Overreliance." CHI '25. | `notes_2025_Spatharioti_LLM-Search-Decision-Making.md` | RCT (two between-subjects online experiments) |
 
 ---
 
