@@ -30,6 +30,12 @@
 | 1 | 2026-04-10 | `Wu2025_LLMMedicalCitations.pdf` | Wu, K. et al. (2025). "An automated framework for assessing how well LLMs cite relevant medical references." *Nature Communications*, 16, 3615. | `notes_Wu2025_LLMMedicalCitations.md` | Benchmarking / Automated evaluation (SourceCheckup) |
 | 2 | 2026-04-10 | `Burtch2024_GenAIKnowledgeCommunities.pdf` | Burtch, G., Lee, D., & Chen, Z. (2024). "The consequences of generative AI for online knowledge communities." *Scientific Reports*, 14, 10413. | `notes_Burtch2024_GenAIKnowledgeCommunities.md` | Synthetic Control (SCUL) + Diff-in-Diff |
 | 3 | 2026-04-10 | `Fletcher2024_NewsAIBlocking.pdf` | Fletcher, R. (2024). "How Many News Websites Block AI Crawlers?" Reuters Institute, Oxford. | `notes_Fletcher2024_NewsAIBlocking.md` | Descriptive (robots.txt tracking via Wayback Machine) |
+| 4 | 2026-04-12 | `Aggarwal2024_GenerativeEngineOptimization.pdf` | Aggarwal, P. et al. (2024). "GEO: Generative Engine Optimization." KDD'24. | `notes_Aggarwal2024_GenerativeEngineOptimization.md` | Benchmarking (GEO-bench, 10K queries, 9 optimization methods) |
+| 5 | 2026-04-12 | `Jazwinska2024_ChatGPT-Search-Misrepresents.pdf.pdf` | Jazwinska, K. & Chandrasekar, A. (2024). "How ChatGPT Search (Mis)represents Publisher Content." CJR / Tow Center. | `notes_Jazwinska2024_ChatGPT-Search-Misrepresents.md` | Descriptive audit (200 quotes, 20 publishers) |
+| 6 | 2026-04-12 | `Jazwinska2025_AI-Search-Citation-Problem.pdf` | Jazwinska, K. & Chandrasekar, A. (2025). "AI Search Has a Citation Problem." CJR / Tow Center. | `notes_Jazwinska2025_AI-Search-Citation-Problem.md` | Descriptive audit (1,600 queries, 8 AI search engines) |
+| 7 | 2026-04-12 | `Kim2025_ScraperRobotsTXT.pd.pdf` | Kim, T. et al. (2025). "Scrapers Selectively Respect robots.txt Directives." IMC'25, ACM. | `notes_Kim2025_ScraperRobotsTXT.md` | Empirical measurement (3.9M requests, 36 websites, controlled experiment) |
+| 8 | 2026-04-12 | `Li2025_HumanTrustAISearch.pdf` | Li, H. & Aral, S. (2025). "Human Trust in AI Search: A Large-Scale Experiment." MIT, arXiv. | `notes_Li2025_HumanTrustAISearch.md` | Pre-registered RCT (N=4,927, 6 treatment groups) |
+| 9 | 2026-04-12 | `Yang2024_GenAICopyright.pdf` | Yang, S. A. & Zhang, A. H. (2024). "Generative AI and Copyright: A Dynamic Perspective." LBS/USC, arXiv. | `notes_Yang2024_GenAICopyright.md` | Analytical / theoretical (two-period economic model) |
 
 ---
 
