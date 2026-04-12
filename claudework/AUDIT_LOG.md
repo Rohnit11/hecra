@@ -40,6 +40,8 @@
 | 11 | 2026-04-10 | `2024_Sharma_LLM-Echo-Chamber.pdf` | Sharma, N., Liao, Q. V., & Xiao, Z. (2024). "Generative Echo Chamber? Effects of LLM-Powered Search Systems on Diverse Information Seeking." CHI '24, ACM. | `notes_2024_Sharma_LLM-Echo-Chamber.md` | RCT (two between-subjects online experiments) |
 | 12 | 2026-04-10 | `2025_Padilla_LLM-Adoption.pdf` | Padilla, Lam, Lambrecht & Hollenbeck (2025). "The Impact of LLM Adoption on Online User Behavior." | `notes_2025_Padilla_LLM-Adoption.md` | Staggered Difference-in-Differences |
 | 13 | 2026-04-10 | `2025_Spatharioti_LLM-Search-Decision-Making.pdf` | Spatharioti, Rothschild, Goldstein & Hofman (2025). "Effects of LLM-based Search on Decision Making: Speed, Accuracy, and Overreliance." CHI '25. | `notes_2025_Spatharioti_LLM-Search-Decision-Making.md` | RCT (two between-subjects online experiments) |
+| 14 | 2026-04-12 | `Longpre2025_ConsentInCrisis.pdf` | Longpre, S., Mahari, R., Lee, A., Lund, C., et al. (2025). "Consent in Crisis: The Rapid Decline of the AI Data Commons." Data Provenance Initiative / MIT. | `notes_Longpre2025_ConsentInCrisis.md` | Descriptive longitudinal audit (robots.txt + ToS tracking via Wayback Machine, SARIMA forecasting) |
+| 15 | 2026-04-12 | `Wardle2025_EvolvingHealthHISB.pdf` | Wardle, C., Urbani, S., & Wang, E. (2025). "Evolving Health Information-Seeking Behavior in the Context of Google AI Overviews, ChatGPT, and Alexa." *JMIR*, 27, e79961. | `notes_Wardle2025_EvolvingHealthHISB.md` | Qualitative (think-aloud protocol, N=27, reflexive thematic analysis) |
 
 ---
 
