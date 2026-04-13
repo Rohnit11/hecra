@@ -42,6 +42,10 @@
 | 13 | 2026-04-10 | `2025_Spatharioti_LLM-Search-Decision-Making.pdf` | Spatharioti, Rothschild, Goldstein & Hofman (2025). "Effects of LLM-based Search on Decision Making: Speed, Accuracy, and Overreliance." CHI '25. | `notes_2025_Spatharioti_LLM-Search-Decision-Making.md` | RCT (two between-subjects online experiments) |
 | 14 | 2026-04-12 | `Longpre2025_ConsentInCrisis.pdf` | Longpre, S., Mahari, R., Lee, A., Lund, C., et al. (2025). "Consent in Crisis: The Rapid Decline of the AI Data Commons." Data Provenance Initiative / MIT. | `notes_Longpre2025_ConsentInCrisis.md` | Descriptive longitudinal audit (robots.txt + ToS tracking via Wayback Machine, SARIMA forecasting) |
 | 15 | 2026-04-12 | `Wardle2025_EvolvingHealthHISB.pdf` | Wardle, C., Urbani, S., & Wang, E. (2025). "Evolving Health Information-Seeking Behavior in the Context of Google AI Overviews, ChatGPT, and Alexa." *JMIR*, 27, e79961. | `notes_Wardle2025_EvolvingHealthHISB.md` | Qualitative (think-aloud protocol, N=27, reflexive thematic analysis) |
+| 16 | 2026-04-13 | `Cooper2025_GenAICopyrightPrimer.pdf.pdf` | Cooper, Z., Martens, B., Peukert, C., & Stocker, V. (2025). "The Law and Economics of Generative AI and Copyright: A Primer to Core Challenges for Our Digital Future." *Review of Network Economics*, 24(3), 161--176. | `notes_Cooper2025_GenAICopyrightPrimer.md` | Descriptive / theoretical (law-and-economics policy primer) |
+| 17 | 2026-04-13 | `Demirci2025_WhoIsAIReplacing.pdf` | Demirci, O., Hannane, J., & Zhu, X. (2025). "Who Is AI Replacing? The Impact of Generative AI on Online Freelancing Platforms." Working Paper. | `notes_Demirci2025_WhoIsAIReplacing.md` | Difference-in-Differences (ChatGPT + Image AI releases as shocks, N=1,218,463 job posts) |
+| 18 | 2026-04-13 | `Goldberg2026_GenAICreativeGoods.pdf.pdf` | Goldberg, S. G. & Lam, H. T. (2026). "Generative AI & Creative Goods: Market Expansion, Crowd-Out, and Copyright." Stanford GSB / UCLA Anderson. | `notes_Goldberg2026_GenAICreativeGoods.md` | Difference-in-Differences (Adobe Stock GenAI policy, 1,719 keyword markets, N=55,008 market-months) |
+| 19 | 2026-04-13 | `Humlum2025_SmallLaborMarketEffects.pdf` | Humlum, A. & Vestergaard, E. (2025). "Large Language Models, Small Labor Market Effects." BFI Working Paper 2025-56, U of Chicago. | `notes_Humlum2025_SmallLaborMarketEffects.md` | DiD + Coworker IV (ChatGPT launch, ~25,000 workers, Danish admin data, precisely estimated zeros) |
 
 ---
 
@@ -50,6 +54,9 @@
 - **Wu2025 PDF was initially mislabeled** — the first upload contained a copy of the Burtch2024 paper. The corrected PDF (996.9KB, 10 pages) was re-uploaded and re-audited.
 - **Always work on `main` branch** — worktree branches (e.g., `claude/admiring-noyce`) cause merge difficulties. Specify "work only on main branch" in the prompt.
 - **PDF page-range reading (`pages` parameter) failed** on this machine due to missing `pdftoppm`. Papers were read as whole files instead. For papers >40 pages, consider installing poppler-utils or using the `/split-pdf` skill.
+- **Gans2024_GenAICopyrightPolicy.pdf was mislabeled** — the PDF actually contained a copy of Demirci et al. (2025) "Who Is AI Replacing?" The actual Gans (2024) copyright policy paper was not in the batch. No audit entry created for the mislabeled file.
+- **paper1.pdf and paper2.pdf** referenced in the command template were not found on the system — these appear to be placeholders from the AUDIT_LOG quick-command example.
+- **Batch 3 (2026-04-13)** successfully used PyPDF2 split-pdf protocol for all papers, including the 120-page Goldberg2026 and 95-page Humlum2025.
 
 ---
 
