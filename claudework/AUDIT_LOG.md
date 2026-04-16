@@ -51,6 +51,7 @@
 | 22 | 2026-04-14 | `Liu2025_LaborDemandAgeGenAI.pdf.pdf` | Liu, X. (2025). "Labor Demand and Age in the Age of Generative AI." Working Paper. | `notes_Liu2025_LaborDemandAgeGenAI.md` | DiD (ChatGPT launch, high- vs low-AI-substitution occupations, N=6.75M state-industry-occ-quarter cells) |
 | 23 | 2026-04-14 | `Lyu2025_WikipediaContributions.pdf` | Lyu, X. et al. (2025). "ChatGPT and Wikipedia Contributions." WWW Companion '25, ACM. | `notes_Lyu2025_WikipediaContributions.md` | DiD (ChatGPT launch, article similarity to GPT output, N=2,206 articles) |
 | 24 | 2026-04-14 | `Zhang2024_MarketEquilibriumGenAI.pd.pdf` | Zhang, X. et al. (2024). "Market Equilibrium in the Age of Generative AI." Working Paper. | `notes_Zhang2024_MarketEquilibriumGenAI.md` | DiD (NovelAI leak Oct 2022, tachie vs wallpaper on Mihuashi, N=126 category-week obs) |
+| 25 | 2026-04-16 | `Acemoglu2025_SimpleMacroeconomicsAI.pdf` | Acemoglu, D. (2025). "The simple macroeconomics of AI." *Economic Policy*, 40(121), 13--58. | `notes_Acemoglu2025_SimpleMacroeconomicsAI.md` | Theoretical / calibration (task-based model + Hulten's theorem; Eloundou+Svanberg exposure; TFP gain ≤0.66%, GDP ≤1.56% over 10 yrs) |
 
 ---
 
