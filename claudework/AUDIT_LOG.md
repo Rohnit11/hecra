@@ -53,6 +53,7 @@
 | 24 | 2026-04-14 | `Zhang2024_MarketEquilibriumGenAI.pd.pdf` | Zhang, X. et al. (2024). "Market Equilibrium in the Age of Generative AI." Working Paper. | `notes_Zhang2024_MarketEquilibriumGenAI.md` | DiD (NovelAI leak Oct 2022, tachie vs wallpaper on Mihuashi, N=126 category-week obs) |
 | 25 | 2026-04-16 | `Acemoglu2025_SimpleMacroeconomicsAI.pdf` | Acemoglu, D. (2025). "The simple macroeconomics of AI." *Economic Policy*, 40(121), 13--58. | `notes_Acemoglu2025_SimpleMacroeconomicsAI.md` | Theoretical / calibration (task-based model + Hulten's theorem; Eloundou+Svanberg exposure; TFP gain ≤0.66%, GDP ≤1.56% over 10 yrs) |
 | 26 | 2026-04-16 | `Ide2025_AIKnowledgeEconomy.pdf` | Ide, E. & Talamàs, E. (2025). "Artificial Intelligence in the Knowledge Economy." *Journal of Political Economy*, 133(12), 3762--3797. | `notes_Ide2025_AIKnowledgeEconomy.md` | Pure theory (Garicano-style knowledge hierarchies + AI agents; Props 1--6; autonomous AI helps top, nonautonomous AI helps bottom, output higher under autonomous) |
+| 27 | 2026-04-16 | `Agrawal2025_GeniusOnDemand.pdf` | Agrawal, A., Gans, J. S., & Goldfarb, A. (2025). "Genius on Demand: The Value of Transformative Artificial Intelligence." NBER Economics of Transformative AI Conference (Stanford, 2025). | `notes_Agrawal2025_GeniusOnDemand.md` | Pure theory (Carnehl-Schneider knowledge-as-QA-pair + 3 worker types: routine/human-genius/AI-genius; Props 1--3; routine fully displaced iff η_AI ≤ 1/q²; human geniuses ultra-specialize at frontier) |
 
 ---
 
