@@ -63,6 +63,10 @@
 \setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
 \setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
 
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
 % Custom commands
 \newcommand{\transitionslide}[2]{%
     {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
@@ -111,12 +115,12 @@ Cooper, Martens, Peukert, \& Stocker (2025), \emph{Review of Network Economics} 
 \vspace{0.2cm}
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}p{5.6cm}p{5.6cm}@{}}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.2cm}>{\RaggedRight\arraybackslash}p{4.8cm}>{\RaggedRight\arraybackslash}p{5.4cm}@{}}
 \toprule
 \textbf{Stage} & \textbf{Core question} & \textbf{Status} \\
 \midrule
-\textbf{Input} & Can copyrighted works be scraped to train models? & Unsettled: fair use (US), TDM exceptions \& opt-outs (EU) \\
-\textbf{Output} & Are AI-assisted works copyrightable? & Disparate thresholds across US, EU, China \\
+\textbf{Input} & Can copyrighted works be scraped for training? & Unsettled: fair use (US), TDM \& opt-outs (EU) \\
+\textbf{Output} & Are AI-assisted works copyrightable? & Disparate thresholds: US, EU, China \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -141,22 +145,21 @@ Cooper, Martens, Peukert, \& Stocker (2025), \emph{Review of Network Economics} 
 
 % ---------- CASE LAW ----------
 \begin{frame}{The two leading US rulings disagree on why training is fair use}
-\vspace{0.2cm}
 \begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.2cm}p{10.4cm}@{}}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.0cm}>{\RaggedRight\arraybackslash}p{9.4cm}@{}}
 \toprule
 \textbf{Alsup (Anthropic)} & Initial book downloads \alert{infringing} $\rightarrow$ \textbf{\$1.5B} recovery; subsequent training use ruled fair use. \\
 \midrule
-\textbf{Chhabria (Meta)} & Training fair use \emph{only because} ``these plaintiffs made the wrong arguments''; judge believes training on protected works \alert{would generally be illegal}. \\
+\textbf{Chhabria (Meta)} & Training fair use \emph{only because} plaintiffs ``made the wrong arguments''; judge believes training would \alert{generally be illegal}. \\
 \midrule
 \textbf{USCO (2025b)} & Doubts fair use applies when AI outputs \alert{compete in existing markets} for training works. \\
 \midrule
-\textbf{EU \textemdash{} Hamburg LAION} & Suggests \alert{terms-of-service opt-outs are enforceable}. \\
+\textbf{EU \textemdash{} Hamburg} & LAION ruling: \alert{terms-of-service opt-outs} likely enforceable. \\
 \bottomrule
 \end{tabular}
 \end{center}
-\vspace{0.3cm}
+\vspace{0.2cm}
 \begin{flushright}
 \footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), pp.~165--166. Dozens of US suits remain pending.}
 \end{flushright}
@@ -167,23 +170,22 @@ Cooper, Martens, Peukert, \& Stocker (2025), \emph{Review of Network Economics} 
 
 % ---------- YANG ABUNDANT ----------
 \begin{frame}{When training data is abundant, generous fair use maximizes \emph{every} welfare metric}
-\vspace{0.2cm}
 \begin{center}
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{@{}p{6cm}p{6cm}@{}}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{5.6cm}p{5.6cm}@{}}
 \toprule
 \textbf{Welfare variable} & \textbf{Maximized by} \\
 \midrule
-Model quality $X_2$ & $f = 0$ \quad$\rightarrow$\quad $X_2 = 1$ \\
+Model quality $X_2$ & $f = 0 \;\rightarrow\; X_2 = 1$ \\
 AI content quantity & $f = 0$ \\
 Creator income & $f = 0$ \\
-Consumer surplus & $f = 0$ (across all tested $X_1, k, M$) \\
+Consumer surplus & $f = 0$ (all tested $X_1, k, M$) \\
 Social welfare & $f = 0$ \\
 \bottomrule
 \end{tabular}
 \end{center}
-\vspace{0.3cm}
-\textbf{Optimal joint policy:} $\{f=0,\ \phi=1\}$ \textemdash{} generous fair use \emph{plus} full AI-copyrightability.\\[0.3cm]
+\vspace{0.2cm}
+\textbf{Optimal joint policy:} $\{f=0,\ \phi=1\}$ \textemdash{} generous fair use \emph{plus} full AI-copyrightability.\\[0.2cm]
 \begin{flushright}
 \footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Proposition 7 \& Corollary 2; data-abundant regime, $Q_0 \to \infty$.}
 \end{flushright}
@@ -212,7 +214,7 @@ A copyright doctrine welfare-optimal in 2020 (data-abundant) becomes welfare-des
 \vspace{0.2cm}
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{8.6cm}@{}}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}>{\RaggedRight\arraybackslash}p{8.4cm}@{}}
 \toprule
 \textbf{AI-copyrightability $\phi$} & \textbf{Effect of generous fair use on AI development} \\
 \midrule
@@ -236,23 +238,21 @@ $X_2$ is \alert{inverted-U} in $\phi$ when data is scarce \emph{(Prop.~12)}. The
 
 % ---------- AUTHORSHIP DIVERGENCE ----------
 \begin{frame}{Three jurisdictions reach three verdicts on the same AI-assisted work}
-\vspace{0.2cm}
 \begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.2cm}p{4.2cm}p{6.6cm}@{}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.0cm}>{\RaggedRight\arraybackslash}p{3.4cm}>{\RaggedRight\arraybackslash}p{6.6cm}@{}}
 \toprule
 \textbf{Jurisdiction} & \textbf{Ruling} & \textbf{Threshold} \\
 \midrule
-\textbf{China} & \textcolor{Teal}{\textbf{Copyrightable}} & ``Intellectual investment'' + ``personalized expression'' via prompting \emph{(Li v.\ Liu, 2023)} \\
+\textbf{China} \emph{(Li v.\ Liu, 2023)} & \textcolor{Teal}{\textbf{Copyrightable}} & ``Intellectual investment'' \& ``personalized expression'' via prompting \\
 \midrule
-\textbf{US (USCO)} & \alert{\textbf{Not copyrightable}} & ``All current-state prompting outputs'' lack sufficient human control \emph{(USCO 2025a)} \\
+\textbf{US} \emph{(USCO 2025a)} & \alert{\textbf{Not copyrightable}} & ``All current-state prompting outputs'' lack sufficient human control \\
 \midrule
-\textbf{EU (Czech)} & \alert{\textbf{Not copyrightable}} & ``Plaintiff did not personally create the work; it was created by artificial intelligence'' \\
+\textbf{EU} \emph{(Czech)} & \alert{\textbf{Not copyrightable}} & ``Plaintiff did not personally create the work'' \\
 \bottomrule
 \end{tabular}
 \end{center}
-\vspace{0.3cm}
-US copyright is \emph{separable per element}: in one work, drums may be unprotected while lyrics are protected.\\[0.2cm]
+\vspace{0.2cm}
 \begin{flushright}
 \footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Section 3.2, pp.~168--170.}
 \end{flushright}
