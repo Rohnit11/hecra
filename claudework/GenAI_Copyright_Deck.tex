@@ -1,0 +1,339 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{Fair Use and AI-Copyrightability Must Be Designed Jointly}}
+\subtitle{Synthesizing Yang \& Zhang (2024) and Cooper et al.\ (2025)}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Yang \& Zhang (2024), \emph{arXiv:2402.17801v2} \quad\textbar\quad
+Cooper, Martens, Peukert, \& Stocker (2025), \emph{Review of Network Economics} 24(3): 161--176}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{\$1.5 billion}}\\[0.3cm]
+{\large\textcolor{DeepNavy}{the largest copyright recovery in history}}\\[0.6cm]
+{\large\textcolor{WarmGray}{paid by one AI lab \textemdash{} for downloads, not training.}}\\[1.2cm]
+{\Large\textcolor{DeepNavy}{And the doctrine is still unsettled.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Bartz v.\ Anthropic; Cooper et al.\ 2025, p.~165}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{GenAI breaks copyright at both input and output stages}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}p{5.6cm}p{5.6cm}@{}}
+\toprule
+\textbf{Stage} & \textbf{Core question} & \textbf{Status} \\
+\midrule
+\textbf{Input} & Can copyrighted works be scraped to train models? & Unsettled: fair use (US), TDM exceptions \& opt-outs (EU) \\
+\textbf{Output} & Are AI-assisted works copyrightable? & Disparate thresholds across US, EU, China \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Sections 3.1--3.3.}
+\end{flushright}
+\end{frame}
+
+% ---------- INPUT EVIDENCE ----------
+\begin{frame}{Two-thirds of AI training datasets carry wrong or missing licenses}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{$\sim$65\%} of datasets on Hugging Face \& PapersWithCode have missing, incorrect, or ambiguous license metadata.\\
+{\footnotesize\textcolor{WarmGray}{(Longpre et al.\ 2024a, cited in Cooper 2025, p.~167)}}
+\item In \textbf{LAION-5B} (largest public image set): fewer than \textbf{1 in 1{,}000} datapoints carry license metadata.
+\item \textbf{10 website domains} account for \textbf{23\%} of LAION's $\sim$2 billion images \textemdash{} supply is concentrated, not representative.
+\item Opted-out vs.\ licensed images depict \alert{semantically different concepts} and differ in technical quality.\\
+{\footnotesize\textcolor{WarmGray}{(Shcherbakov et al.\ 2025, cited in Cooper 2025, pp.~167, 171)}}
+\end{itemize}
+\end{frame}
+
+% ---------- CASE LAW ----------
+\begin{frame}{The two leading US rulings disagree on why training is fair use}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.2cm}p{10.4cm}@{}}
+\toprule
+\textbf{Alsup (Anthropic)} & Initial book downloads \alert{infringing} $\rightarrow$ \textbf{\$1.5B} recovery; subsequent training use ruled fair use. \\
+\midrule
+\textbf{Chhabria (Meta)} & Training fair use \emph{only because} ``these plaintiffs made the wrong arguments''; judge believes training on protected works \alert{would generally be illegal}. \\
+\midrule
+\textbf{USCO (2025b)} & Doubts fair use applies when AI outputs \alert{compete in existing markets} for training works. \\
+\midrule
+\textbf{EU \textemdash{} Hamburg LAION} & Suggests \alert{terms-of-service opt-outs are enforceable}. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), pp.~165--166. Dozens of US suits remain pending.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION ----------
+\transitionslide{The dynamic problem}{What is welfare-maximizing today can be welfare-destroying tomorrow.}
+
+% ---------- YANG ABUNDANT ----------
+\begin{frame}{When training data is abundant, generous fair use maximizes \emph{every} welfare metric}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{6cm}p{6cm}@{}}
+\toprule
+\textbf{Welfare variable} & \textbf{Maximized by} \\
+\midrule
+Model quality $X_2$ & $f = 0$ \quad$\rightarrow$\quad $X_2 = 1$ \\
+AI content quantity & $f = 0$ \\
+Creator income & $f = 0$ \\
+Consumer surplus & $f = 0$ (across all tested $X_1, k, M$) \\
+Social welfare & $f = 0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\textbf{Optimal joint policy:} $\{f=0,\ \phi=1\}$ \textemdash{} generous fair use \emph{plus} full AI-copyrightability.\\[0.3cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Proposition 7 \& Corollary 2; data-abundant regime, $Q_0 \to \infty$.}
+\end{flushright}
+\end{frame}
+
+% ---------- YANG SCARCE ----------
+\begin{frame}{When training data is scarce, generous fair use \alert{harms} AI development}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{Generous fair use} ($f \to 0$): kills creator incentives $\rightarrow$ \alert{no human content} for training $\rightarrow$ model improvement stalls. \emph{(Prop.~10)}
+\item \textbf{Strict fair use} ($f$ too large): AI company \alert{abandons model improvement} entirely. \emph{(Prop.~11)}
+\item \textbf{A moderate $f$ maximizes} model quality $X_2$, social welfare, and consumer surplus.
+\end{itemize}
+\vspace{0.5cm}
+\begin{block}{The central novel finding}
+A copyright doctrine welfare-optimal in 2020 (data-abundant) becomes welfare-destroying once pre-existing data is exhausted (data-scarce, $Q_0 = 0$).
+\end{block}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Propositions 10--11.}
+\end{flushright}
+\end{frame}
+
+% ---------- INTERACTION (KEY) ----------
+\begin{frame}{Strong AI-copyrightability flips fair use from helpful to harmful}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{8.6cm}@{}}
+\toprule
+\textbf{AI-copyrightability $\phi$} & \textbf{Effect of generous fair use on AI development} \\
+\midrule
+\textbf{Weak} & \textcolor{Teal}{\textbf{Promotes}} development \\
+& \footnotesize creators still produce human content for training \\
+\midrule
+\textbf{Strong} & \alert{\textbf{Hinders}} development \\
+& \footnotesize too few creators $\rightarrow$ training data dries up \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+$X_2$ is \alert{inverted-U} in $\phi$ when data is scarce \emph{(Prop.~12)}. The two policies cannot be designed independently.\\[0.3cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Figure 9 \& Proposition 12.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 2 ----------
+\transitionslide{The output side}{Three jurisdictions, three verdicts, one work.}
+
+% ---------- AUTHORSHIP DIVERGENCE ----------
+\begin{frame}{Three jurisdictions reach three verdicts on the same AI-assisted work}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.2cm}p{4.2cm}p{6.6cm}@{}}
+\toprule
+\textbf{Jurisdiction} & \textbf{Ruling} & \textbf{Threshold} \\
+\midrule
+\textbf{China} & \textcolor{Teal}{\textbf{Copyrightable}} & ``Intellectual investment'' + ``personalized expression'' via prompting \emph{(Li v.\ Liu, 2023)} \\
+\midrule
+\textbf{US (USCO)} & \alert{\textbf{Not copyrightable}} & ``All current-state prompting outputs'' lack sufficient human control \emph{(USCO 2025a)} \\
+\midrule
+\textbf{EU (Czech)} & \alert{\textbf{Not copyrightable}} & ``Plaintiff did not personally create the work; it was created by artificial intelligence'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+US copyright is \emph{separable per element}: in one work, drums may be unprotected while lyrics are protected.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Section 3.2, pp.~168--170.}
+\end{flushright}
+\end{frame}
+
+% ---------- DETECTION ----------
+\begin{frame}{Disclosure cannot enforce the AI / non-AI line \textemdash{} and creates perverse incentives}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{The ``Old Hard Drive Debacle''} \emph{(Cooper 2025)}: artists must log every GenAI use \alert{solely to strip themselves of rights} $\rightarrow$ strong incentive to \emph{deny} AI use.
+\item \textbf{No robust detection tool} exists for whether \textemdash{} let alone \emph{which elements} of \textemdash{} a work used GenAI.\\
+{\footnotesize\textcolor{WarmGray}{(10+ sources on watermarking limits cited in Cooper 2025)}}
+\item \textbf{Convergence problem:} search-engine and AI-training crawlers are technologically indistinguishable; blocking one blocks the other.
+\end{itemize}
+\vspace{0.3cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Section 3.2, pp.~169--170, 172.}
+\end{flushright}
+\end{frame}
+
+% ---------- INFRINGEMENT + SYNTHETIC ----------
+\begin{frame}{Synthetic data is no escape \textemdash{} model collapse and copy-mining await}
+\vspace{0.2cm}
+\begin{itemize}
+\item GenAI produces \alert{near-identical copies} of protected works even with developer safeguards.\\
+{\footnotesize\textcolor{WarmGray}{(Cooper \& Grimmelmann 2025)}}
+\item US ``Blurred Lines'' precedent: \alert{weak similarity thresholds} mean outputs need not be close replicas to infringe.
+\item \textbf{Copy-mining incentive}: mass-generate to claim maximum rights, mining out the latent space between existing works.\\
+{\footnotesize\textcolor{WarmGray}{(Cooper 2025; Lemley 2024)}}
+\item \textbf{Synthetic data fails as a fix:} depends on real-data quality, cannot generate genuine novelty, recursive training risks \alert{model collapse}.\\
+{\footnotesize\textcolor{WarmGray}{(Shumailov et al.\ 2024)}}
+\end{itemize}
+\end{frame}
+
+% ---------- POLICY OPTIMA ----------
+\begin{frame}{Optimal policy depends on objective \emph{and} data regime \textemdash{} divergence is rational}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Regulator's objective} & \textbf{Optimal $\phi$} & \textbf{Optimal $f$} \\
+\midrule
+Consumer surplus & Lowest & More generous \\
+Social welfare \,/\, AI development & Substantially higher & \alert{Stricter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\begin{itemize}
+\item Fair use is \alert{more sensitive} than $\phi$ to data availability ($Q_0$), training efficiency ($k$), and market growth ($M$).
+\item Predicted alignment: \textbf{US / China} $\rightarrow$ AI growth; \textbf{EU} $\rightarrow$ consumer welfare $\rightarrow$ persistent jurisdictional divergence.
+\end{itemize}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Figure 10; Cooper et al.\ (2025), citing Peukert 2025a.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{A skeptic would say the model is too stylized to drive real policy}
+\vspace{0.2cm}
+\textbf{The objection.} Yang \& Zhang assume uniform skill, competitive AI markets, binary content quality, and a single regulator. Cooper et al.\ provide no original empirical evidence.\\[0.4cm]
+\textbf{The response.}
+\begin{itemize}
+\item Yang \& Zhang's \alert{regime-dependence result} (abundant vs.\ scarce) is robust across all numerical examples and does not hinge on the uniform-skill closed form.
+\item The Cooper primer's job is not estimation \textemdash{} it identifies \alert{empirical gaps} (representativeness of opt-out data, creator-behavior responses, output memorization rates) for the next generation of work.
+\item Both papers converge on the same conclusion from independent methods: \alert{copyright doctrine cannot be optimized one lever at a time, in one jurisdiction, at one moment in time.}
+\end{itemize}
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{Joint. Dynamic. Cross-border.}}\\[0.8cm]
+{\Large\textcolor{SoftWhite}{Fair use and AI-copyrightability are economically linked.}}\\[0.3cm]
+{\Large\textcolor{SoftWhite}{Designing them in isolation \alert{destroys} welfare once data runs scarce.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
