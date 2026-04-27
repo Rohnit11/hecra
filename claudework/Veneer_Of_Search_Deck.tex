@@ -1,0 +1,331 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Veneer of Search}}
+\subtitle{How AI Interfaces Earn Trust They Haven't Earned}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Spatharioti et al.\ (2025), \emph{CHI '25} \quad\textbar\quad
+Li \& Aral (2025), \emph{arXiv:2504.06435}\\
+Sharma, Liao \& Xiao (2024), \emph{CHI '24} \quad\textbar\quad
+Wardle, Urbani \& Wang (2025), \emph{JMIR} 27, e79961}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{1.6 min \quad 47\% \quad 4.41/5}}\\[0.6cm]
+{\Large\textcolor{DeepNavy}{AI search cut task time in half.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{It \alert{halved accuracy} on a hard task.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{Users rated the experience \emph{best of all}.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1, $N\!=\!90$ MTurk; vs.\ traditional search 3.4 min, 93\% accuracy, 3.10/5.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{AI search wears four veneers \textemdash{} each builds unearned trust}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.0cm}>{\RaggedRight\arraybackslash}p{3.6cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{2.0cm}@{}}
+\toprule
+\textbf{Veneer} & \textbf{What it looks like} & \textbf{What it does} & \textbf{Source} \\
+\midrule
+\textbf{Speed} & ``AI search is fast'' & Hides errors users cannot catch & Spatharioti \\
+\textbf{References} & ``AI cites its sources'' & Builds trust even when fake & Li \& Aral \\
+\textbf{Search} & ``User issues queries'' & Most queries are confirmatory & Sharma \\
+\textbf{Utility} & ``AI is useful'' & Overrides users' own distrust & Wardle \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+% ============================================================
+%  VENEER 1 \textemdash{} SPEED (SPATHARIOTI)
+% ============================================================
+
+\transitionslide{Veneer 1: speed that hides errors}{Faster searches, worse decisions, higher satisfaction.}
+
+% ---------- SPATHARIOTI: TIME + ACCURACY ----------
+\begin{frame}{LLM search halved task time \textemdash{} and halved accuracy on the hard task}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{3.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{Traditional search} & \textbf{LLM-based search} \\
+\midrule
+Median task duration & 3.4 min & \alert{1.6 min} \,($p\!<\!.001$) \\
+Easy-task accuracy & 92.3\% & 95.3\% \,(NS) \\
+\textbf{Hard-task accuracy} & \textbf{93\%} & \alert{\textbf{47\%}} \,($p\!<\!.001$) \\
+Number of queries & 2.5 & 1.9 \,($p\!=\!.02$) \\
+Query complexity (1\textendash 5) & 1.8 & 3.4 \,($p\!<\!.001$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+On the hard task, \alert{30/51} LLM users issued only \emph{one} query; none re-queried after a wrong answer.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1, Figs.~2\textendash 3; 4Runner adversarial item.}
+\end{flushright}
+\end{frame}
+
+% ---------- SPATHARIOTI: PREFERENCE BLINDNESS ----------
+\begin{frame}{Users prefer LLM search 4.41 vs.\ 3.10 \textemdash{} and cannot detect its errors}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.6cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Self-reported measure} & \textbf{Traditional} & \textbf{LLM} \\
+\midrule
+Overall search experience (1\textendash 5) & 3.10 & \textcolor{Teal}{\textbf{4.41}} \,($p\!<\!.001$) \\
+Perceived reliability (1\textendash 5) & $\sim$4 & $\sim$4 \,(NS, $p\!=\!.91$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\begin{block}{The interface fix exists \textemdash{} but only if it is added}
+Confidence highlighting (red on low-probability tokens, Exp.~2) more than \alert{doubled hard-task accuracy} from 26\% to 58\% \,($p\!<\!.01$). The fix lives in the UI, not the model.
+\end{block}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1 \& 2, Figs.~4, 6.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  VENEER 2 \textemdash{} REFERENCES (LI \& ARAL)
+% ============================================================
+
+\transitionslide{Veneer 2: trust from interface, not content}{The references work \emph{whether or not they are real}.}
+
+% ---------- LI \& ARAL: REFERENCE EFFECT ----------
+\begin{frame}{Reference links increase trust \textemdash{} and hallucinated ones work just as well}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{6.4cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Treatment} & \textbf{$\beta$ on trust} & \textbf{$\beta$ on share} \\
+\midrule
+References (vs.\ plain GenAI) & \textcolor{Teal}{\textbf{+0.091}}\,$^{***}$ & \textcolor{Teal}{\textbf{+0.121}}\,$^{***}$ \\
+Hallucinated vs.\ valid references & $-0.021$ \,(NS) & $-0.008$ \,(NS) \\
+Uncertainty highlighting & \alert{$-0.157$}\,$^{***}$ & \alert{$-0.179$}\,$^{***}$ \\
+Negative social feedback & \alert{$-0.213$}\,$^{***}$ & \alert{$-0.286$}\,$^{***}$ \\
+GenAI label vs.\ traditional (same content) & $-0.043$\,$^{*}$ & \alert{$-0.141$}\,$^{***}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The mere \emph{presence} of citations creates trust, regardless of whether they resolve. Most vulnerable: lower education, less tech experience, infrequent GenAI users.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Li \& Aral (2025), pre-registered RCT, $N\!=\!4{,}927$ Prolific, Figs.~3\textendash 4.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  VENEER 3 \textemdash{} SEARCH (SHARMA)
+% ============================================================
+
+\transitionslide{Veneer 3: confirmatory querying disguised as search}{When the interface answers, the user stops looking.}
+
+% ---------- SHARMA: 10X CONFIRMATORY ----------
+\begin{frame}{Conversational search induces 10$\times$ more confirmatory querying than web search}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Measure} & \textbf{WebSearch} & \textbf{ConvSearch(Ref)} \\
+\midrule
+Confirmatory query rate & 1.46\% & \alert{15.0\textendash 16.2\%} \\
+Confirmatory agreement (post-task) & 0.80 & \alert{1.79\textendash 1.89} \\
+Confirmatory trust & 0.35 & 0.79\textendash 0.89 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+ANCOVA $F(2,100)\!=\!4.71$, $p\!=\!.01$ on querying; $F\!=\!6.61$, $p\!=\!.002$ on agreement. Cohen's $D$ up to \alert{0.78}.\\
+Inline references did not change this: ConvSearchRef behaved like ConvSearch.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Sharma, Liao \& Xiao (2024), Study~1, $N\!=\!115$ Prolific, Table~1.}
+\end{flushright}
+\end{frame}
+
+% ---------- SHARMA: CONSONANT/DISSONANT ASYMMETRY ----------
+\begin{frame}{Consonant LLMs polarize \textemdash{} but dissonant LLMs do \alert{not} correct it}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.8cm}p{2.4cm}p{2.4cm}p{2.4cm}@{}}
+\toprule
+\textbf{Measure} & \textbf{Consonant} & \textbf{Neutral} & \textbf{Dissonant} \\
+\midrule
+Confirmatory query rate & \alert{42.9\%} & 15.6\% & 12.3\% \\
+Confirmatory arguments in essays & \alert{51.7\%} & 34.8\% & 15.6\% \\
+Confirmatory agreement & \alert{2.44} & 1.84 & 1.51 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\textbf{The asymmetry is the result.} Consonant LLMs amplify polarization with Cohen's $D$ up to \alert{1.19}; dissonant LLMs fail to depolarize on every measure (all $p\!>\!.05$ vs.\ Neutral). Designing ``opposing-view'' tools will not undo selective exposure.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Sharma, Liao \& Xiao (2024), Study~2, $N\!=\!223$, Table~3.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  VENEER 4 \textemdash{} UTILITY (WARDLE)
+% ============================================================
+
+\transitionslide{Veneer 4: utility that overrides distrust}{Users adopt what they doubt \textemdash{} if it is convenient.}
+
+% ---------- WARDLE: UTILITY OVER TRUST ----------
+\begin{frame}{56\% of users adopt AI for health information \emph{despite} distrusting it}
+\vspace{0.1cm}
+\begin{itemize}
+\item \textbf{15/27 (56\%)} used AI-generated health info despite expressing skepticism, when it ``helped power further investigation.''
+\item \textbf{14/27 (52\%)} already integrate ChatGPT into their health-search routines; \textbf{23/27 (85\%)} reported favorably on its formatting or efficiency.
+\item AI is used as a \alert{``starting point''}: keyword generation, summarization, then verified on Google or with a doctor \textemdash{} \emph{utility}, not credibility, drives integration.
+\item Only \alert{5/27 (19\%)} understood that training data shapes LLM outputs.
+\item \textbf{2/3} expressed concern that ChatGPT does not cite sources \textemdash{} yet still used it.
+\end{itemize}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Wardle, Urbani \& Wang (2025), think-aloud protocol, $N\!=\!27$, JMIR 27:e79961.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  DEVIL'S ADVOCATE
+% ============================================================
+
+\begin{frame}{A skeptic would say these are lab effects, not real-world behavior}
+\vspace{0.1cm}
+\textbf{The objection.} Spatharioti uses MTurk ($N\!=\!90$, no demographics); Sharma uses Prolific ($N\!=\!115$\textendash 223, closed-world docs); Wardle is qualitative, $N\!=\!27$ from four East Coast cities. Only Li \& Aral has scale, and even that is a controlled vignette.\\[0.4cm]
+\textbf{The response.}
+\begin{itemize}
+\item \alert{The effect sizes are large.} Cohen's $D\!>\!1$ in Sharma; a 46-point accuracy gap in Spatharioti; $\beta$'s significant at $p\!<\!.001$ in Li \& Aral. Small samples find them anyway.
+\item \alert{Four very different methods converge.} Between-subjects RCT, factorial RCT, large pre-registered RCT, qualitative think-aloud \textemdash{} all four point to interface-driven effects exceeding content-driven ones.
+\item \alert{The lab is the world.} Li \& Aral's exposure audit: \textbf{42\%} of US Google searches now return AI Overviews; \textbf{56\%} for general-knowledge queries. The vignettes describe what most users now see.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+%  SYNTHESIS
+% ============================================================
+
+\begin{frame}{Restoring user judgment requires interface-level, not model-level, fixes}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.2cm}@{}}
+\toprule
+\textbf{Veneer} & \textbf{Reform} & \textbf{Concrete evidence} \\
+\midrule
+Speed & Confidence highlighting on uncertain tokens & Spatharioti Exp.~2: 26\%$\to$58\% accuracy \\
+References & Verified-source badges; degrade UI on broken links & Li \& Aral: refs trusted regardless of validity \\
+Search & Default to neutral retrieval; flag opinion drift & Sharma: dissonant LLM does \emph{not} fix it \\
+Utility & AI literacy on training data; source labels & Wardle: only 19\% understood data shapes outputs \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Each fix is interface-side; none requires changing the underlying model.}
+\end{flushright}
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{The interface earned the trust.}}\\[0.8cm]
+{\huge\bfseries\textcolor{SoftWhite}{The model \alert{did not}.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
