@@ -1,0 +1,333 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Productivity Gap}}
+\subtitle{Why GenAI's 80\% Exposure Yields a 1.56\% Macro Forecast}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Eloundou et al.\ (2024), \emph{Science} 384, 1306 \quad\textbar\quad
+Noy \& Zhang (2023), \emph{Science} 381, 187\\
+Acemoglu (2025), \emph{Economic Policy} 40(121) \quad\textbar\quad
+Agrawal, Gans \& Goldfarb (2025), NBER ETAI\\
+Demirci, Hannane \& Zhu (2025), WP \quad\textbar\quad
+Goldberg \& Lam (2026), Stanford GSB / UCLA}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{80\% \quad\textemdash\quad 1.56\%}}\\[0.6cm]
+{\Large\textcolor{DeepNavy}{Eight in ten US workers have $\geq$10\% of their tasks LLM-exposed.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{The 10-year GDP gain is bounded at \alert{1.56\%}.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{Both numbers are right.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Eloundou et al.\ (2024), Fig.~2; Acemoglu (2025), Table~1, p.~51.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Three pieces of math separate exposure from growth}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.0cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{Question} & \textbf{Number} \\
+\midrule
+\textbf{Exposure} & What share of tasks could AI touch? & 80\% workers, 4.6\% of GDP \\
+\textbf{Lab gain} & How fast/better does AI make a task? & $-$0.8 SD time, $+$0.4 SD grade \\
+\textbf{Macro envelope} & Hulten: $d\ln$TFP $= \bar\pi \times s$ & $\leq$ 0.66\% TFP / 1.56\% GDP \\
+\textbf{Market reality} & Where does the math actually hit? & Narrow sectors, sharp falls \\
+\textbf{Theory} & Who gets displaced first? & Routine, where $\eta_{AI} \le 1/q^2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+{\footnotesize Each row pins down one paper. Read together, they explain why the lab is loud and the macro is quiet.}
+\end{frame}
+
+% ============================================================
+%  SECTION 1: THE HEADLINE NUMBERS
+% ============================================================
+
+\transitionslide{The headline numbers}{Big exposure, big lab gains, small macro envelope.}
+
+% ---------- ELOUNDOU ----------
+\begin{frame}{LLM exposure rises with wages \textemdash{} reversing prior automation's bias}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.4cm}p{2.6cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Job zone} & \textbf{Median income} & \textbf{Mean exposure} & \textbf{Share $>$50\%} \\
+\midrule
+1 (no prep) & \$30{,}230 & 0.06 & 0.0\% \\
+2 & \$38{,}215 & 0.16 & 6.1\% \\
+3 & \$54{,}815 & 0.26 & 10.6\% \\
+\textbf{4 (bachelor's)} & \textbf{\$77{,}345} & \alert{\textbf{0.47}} & \alert{\textbf{34.5\%}} \\
+5 (master's$+$) & \$81{,}980 & 0.43 & 26.5\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{34 occupations have zero exposed tasks} \textemdash{} all manual: roofers, dishwashers, slaughterers, pile-driver operators. Only \alert{1.86\%} of all 19{,}265 tasks are fully automatable (T4).\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Eloundou et al.\ (2024), Tables~1, 5, 8\textendash 9; metric is $E1+0.5\!\cdot\!E2$.}
+\end{flushright}
+\end{frame}
+
+% ---------- NOY ----------
+\begin{frame}{In the lab, ChatGPT cuts time 0.8 SD and raises grades 0.4 SD}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{2.4cm}p{2.4cm}p{1.4cm}@{}}
+\toprule
+\textbf{Outcome ($\Delta$ post$-$pre)} & \textbf{ITT (OLS)} & \textbf{TOT (IV)} & \textbf{$N$} \\
+\midrule
+Time on task (minutes) & \alert{$-$10.84}$^{***}$ & \alert{$-$16.51}$^{***}$ & 346 \\
+Grade (1\textendash 7 scale) & \textcolor{Teal}{\textbf{$+$0.65}}$^{***}$ & \textcolor{Teal}{\textbf{$+$0.95}}$^{***}$ & 1{,}135 \\
+Job satisfaction (1\textendash 10) & $+$1.16$^{***}$ & $+$1.93$^{***}$ & 449 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+Drafting time \alert{halves}; editing time \alert{doubles}. ChatGPT operates as a \emph{drafting substitute}, not an ideation aid \textemdash{} 58 of 173 users submitted output \textbf{unedited}.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Noy \& Zhang (2023), pre-registered RCT, $N\!=\!450$ Prolific, 5 white-collar tasks; SI Tables~S.1\textendash S.2.}
+\end{flushright}
+\end{frame}
+
+% ---------- ACEMOGLU ----------
+\begin{frame}{Hulten arithmetic bounds 10-year TFP gain at 0.66\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Value} & \textbf{Source} \\
+\midrule
+Wage-bill share exposed & 20\% & Eloundou (2024) \\
+$\times$ cost-effectively automatable & 23\% & Svanberg et al.\ (2024) \\
+\textbf{GDP share affected} & \textbf{$=$ 4.6\%} & — \\
+Avg.\ overall cost savings $\bar\pi$ & 14.4\% & Noy/Brynjolfsson \\
+\textbf{$d\ln$ TFP $= s \times \bar\pi$} & \alert{\textbf{$=$ 0.66\%}} & p.~41 \\
+GDP gain (capital response, 10 yrs) & \alert{$\leq$ 1.56\%} & Table~1, p.~51 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{An order of magnitude below Goldman's 7\% and McKinsey's 1.5\textendash 3.4 pp/yr} \textemdash{} those forecasts cannot be reconciled with task-level estimates inside Hulten.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Acemoglu (2025), eq.~14 (p.~28); Table~1 cols.~3 \& 7 (p.~51).}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  SECTION 2: WHERE THE MATH ACTUALLY HITS
+% ============================================================
+
+\transitionslide{Where the math hits}{The macro is small. The dislocations are not.}
+
+% ---------- DEMIRCI ----------
+\begin{frame}{ChatGPT cut writing-prone freelance posts 21\% within 8 months}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.8cm}p{2.8cm}p{2.2cm}p{1.6cm}@{}}
+\toprule
+\textbf{Cluster} & \textbf{DiD coef.\ (SE)} & \textbf{\% change} & \textbf{Shock} \\
+\midrule
+Writing & $-$0.362$^{***}$ (0.054) & \alert{$-$30.4\%} & ChatGPT \\
+Software / web & $-$0.231$^{**}$ (0.054) & $-$20.6\% & ChatGPT \\
+Engineering & $-$0.110 (0.058) & $-$10.4\% & ChatGPT \\
+Graphic design & $-$0.204$^{**}$ (0.048) & $-$18.5\% & Image AI \\
+3D modeling & $-$0.169$^{**}$ (0.048) & $-$15.6\% & Image AI \\
+\bottomrule
+\end{tabular}
+\end{center}
+Surviving employers post \alert{higher budgets} ($+$5.7\%), \alert{more complex jobs} ($+$2.2\%), \alert{more bids} ($+$8.6\%) \textemdash{} the routine layer is skimmed off, not the complex one.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Demirci et al.\ (2025), Tables~2\textendash 3, D1; $N\!=\!1{,}218{,}463$ posts.}
+\end{flushright}
+\end{frame}
+
+% ---------- GOLDBERG ----------
+\begin{frame}{On Adobe Stock, GenAI more than doubled supply \alert{and} cut non-GenAI artists 29\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.0cm}p{2.8cm}p{2.8cm}@{}}
+\toprule
+\textbf{Outcome (Post 7$+$ mth $\times$ Treated)} & \textbf{All images} & \textbf{Non-GenAI} \\
+\midrule
+Production (Poisson APE) & \textcolor{Teal}{\textbf{$+$135.9\%}}$^{***}$ & \alert{$-$14.7\%}$^{***}$ \\
+Active artists & \textcolor{Teal}{\textbf{$+$47.1\%}}$^{***}$ & \alert{$-$29.0\%}$^{***}$ \\
+Sales (Poisson APE) & \textcolor{Teal}{\textbf{$+$82.0\%}}$^{***}$ & \alert{$-$28.2\%}$^{***}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Expansion and crowd-out coexist. Non-GenAI artists differentiate \textemdash{} spreading in embedding space where GenAI clusters do not yet reach. Embedding quality of remaining non-GenAI rises $+$1.8\%$^{***}$.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Goldberg \& Lam (2026), Tables~2\textendash 4; 1{,}719 markets, $N\!=\!55{,}008$.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  SECTION 3: THEORY CLOSES THE GAP
+% ============================================================
+
+\transitionslide{Theory closes the gap}{Routine is fully displaced; geniuses retreat to the frontier.}
+
+% ---------- AGRAWAL ----------
+\begin{frame}{Routine workers are fully displaced when AI's curvature $\eta_{AI} \leq 1/q^2$}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}>{\RaggedRight\arraybackslash}p{3.0cm}>{\RaggedRight\arraybackslash}p{3.0cm}>{\RaggedRight\arraybackslash}p{2.6cm}@{}}
+\toprule
+\textbf{Regime} & \textbf{Routine} & \textbf{Human genius} & \textbf{AI genius} \\
+\midrule
+Pre-AI & Interior $[x_0\!-\!q,\,x_0\!+\!q]$ & By $AA(x)$ peak & — \\
+Short-run AI & Unchanged & Pushed outward & Closer $+$ unanswered \\
+\textbf{Long-run, $\eta_{AI}\!\leq\!1/q^2$} & \alert{\textbf{Fully displaced}} & \textbf{Frontier only} & Routine band \\
+Long-run, $\eta_{AI}\!>\!1/q^2$ & Narrow edge band & Frontier & Interior \\
+\bottomrule
+\end{tabular}
+\end{center}
+The displacement condition is \alert{a geometry inequality}, not a productivity threshold: routine's linear value loses wherever AI's quadratic curvature is shallow enough.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Agrawal, Gans \& Goldfarb (2025), Propositions~1\textendash 3.}
+\end{flushright}
+\end{frame}
+
+% ============================================================
+%  DEVIL'S ADVOCATE
+% ============================================================
+
+\begin{frame}{A skeptic says: the macro estimate is too low, the J-curve is coming}
+\textbf{The objection.}\quad
+The 1.56\% ceiling counts only existing tasks at today's $\sim$14\% cost savings. Goldman's 7\% and McKinsey's 1.5\textendash 3.4 pp/yr could be right if AI generates \alert{new tasks} the rubric does not see.\\[0.3cm]
+\textbf{The response.}
+\begin{itemize}
+\item \alert{Adoption is a headwind, not a tailwind.} Only 1.5\% of US firms had invested in AI by 2019 \textemdash{} 10-year cost reductions are likely \emph{over}stated.
+\item \alert{New tasks have a sign problem.} Acemoglu's bad-task calibration: AI-enabled social media $+$ IT-security $\approx$ 2\% of GDP, ratio of harm-to-benefit $-19/53$. Apparent $+$2\% GDP coexists with $-$0.72\% welfare.
+\item \alert{Micro converges with macro.} Demirci's 21\% drop and Goldberg's 29\% artist exit are \emph{narrow} \textemdash{} exactly what Hulten predicts when 4.6\% of GDP is exposed at $\bar\pi\!\approx\!14\%$.
+\end{itemize}
+\end{frame}
+
+% ============================================================
+%  SYNTHESIS
+% ============================================================
+
+\begin{frame}{Bigger gains require new pro-worker tasks \textemdash{} not better chatbots}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.6cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{What current AI delivers} & \textbf{What would lift the ceiling} \\
+\midrule
+Exposure & Broad, progressive (Eloundou) & New-task exposure measures \\
+Lab gain & Drafting substitution (Noy) & Expertise provision: nurses, electricians \\
+Macro & 0.66\% TFP, 1.56\% GDP & New pro-worker tasks Hulten ignores \\
+Market & Routine skimmed (Demirci, Goldberg) & Differentiation niches survive \\
+Theory & Humans $\to$ frontier (Agrawal) & $\eta_{AI}\!>\!1/q^2$: complement, not substitute \\
+\bottomrule
+\end{tabular}
+\end{center}
+The Hulten ceiling is not a law of nature \textemdash{} it is \alert{what current AI is built to do}.
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{The macro is small.}}\\[0.6cm]
+{\huge\bfseries\textcolor{SoftWhite}{The dislocations are \alert{not}.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
