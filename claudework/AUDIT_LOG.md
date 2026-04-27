@@ -65,6 +65,17 @@
 
 ---
 
+## Synthesis Decks
+
+Decks built from audited notes via the `/compiledeck` skill (Promptpres.md protocol). Every deck commits both `.tex` and `.pdf`, with zero overfull/underfull warnings.
+
+| # | Date | Deliverable | Synthesizes | Argument |
+|---|------|-------------|-------------|----------|
+| D1 | 2026-04 | `GenAI_Copyright_Deck.{tex,pdf}` | Yang & Zhang (2024); Cooper et al.\ (2025) | Fair use and AI-copyrightability are economically linked; designing them in isolation destroys welfare once data runs scarce. |
+| D2 | 2026-04-27 | `Closing_Web_Deck.{tex,pdf}` | Cooper et al.\ (2025); Yang & Zhang (2024); Fletcher (2024); Kim et al.\ (2025); Longpre et al.\ (2025) | AI training rests on four pillars — consent signaling, voluntary compliance, premium content supply, and the legal backstop — and all four are cracking simultaneously. The web is not running out of data; it is running out of consent. |
+
+---
+
 ## Notes on Issues Encountered
 
 - **Wu2025 PDF was initially mislabeled** — the first upload contained a copy of the Burtch2024 paper. The corrected PDF (996.9KB, 10 pages) was re-uploaded and re-audited.
