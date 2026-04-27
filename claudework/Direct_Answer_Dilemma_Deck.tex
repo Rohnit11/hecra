@@ -1,0 +1,366 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Direct Answer Dilemma}}
+\subtitle{How AI Search Closes the Attribution Loop \textemdash{} and Who Pays for It}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Potthast et al.\ (2020), \emph{SIGIR Forum} \quad\textbar\quad
+Liu, Zhang \& Liang (2023), \emph{arXiv:2304.09848}\\
+Jazwinska \& Chandrasekar (2024, 2025), \emph{Tow Center / CJR} \quad\textbar\quad
+Aggarwal et al.\ (2024), \emph{KDD '24}\\
+Khosravi et al.\ (2026), \emph{arXiv preprint} \quad\textbar\quad
+Larsen et al.\ (2025) \quad\textbar\quad
+Liang et al.\ (2025), \emph{Patterns}}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{60\%}}\\[0.4cm]
+{\large\textcolor{DeepNavy}{of citation queries answered \emph{wrong} by eight AI search engines.}}\\[0.2cm]
+{\large\textcolor{DeepNavy}{Grok 3: 94\% wrong. Most wrong answers came with no hedging.}}\\[1.0cm]
+{\Large\textcolor{WarmGray}{The interface earned the user's trust. The citations did not.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2025), \emph{Tow Center / CJR}; 1{,}600 queries across 8 chatbots.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Potthast (2020) named four risks of the direct-answer interface \textemdash{} all four now have data}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{3.8cm}@{}}
+\toprule
+\textbf{Potthast risk (2020)} & \textbf{Mechanism} & \textbf{Empirical confirmation} \\
+\midrule
+\textbf{Misattribution} & Answer drops the source & \alert{Liu 23; Jazwinska 24/25} \\
+\textbf{Source erosion} & Click never happens & \alert{Khosravi 2026} \\
+\textbf{Market distortion} & Ad auction reshapes & \alert{Larsen 2025} \\
+\textbf{Loop pollution} & Synthetic text re-enters web & \alert{Aggarwal 24; Liang 25} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Potthast, Hagen \& Stein (2020), \emph{SIGIR Forum} 54(1):14.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 1 ----------
+\transitionslide{Citation is broken at the source}{Direct-answer interfaces grade their own homework.}
+
+% ============================================================
+%  SECTION A \textemdash{} CITATION INTEGRITY (LIU, JAZWINSKA \times 2)
+% ============================================================
+
+% ---------- LIU 2023 ----------
+\begin{frame}{The better the answer reads, the worse it cites \textemdash{} r = $-0.96$}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{3.4cm}p{3.4cm}@{}}
+\toprule
+\textbf{Engine} & \textbf{Citation recall} & \textbf{Citation precision} \\
+\midrule
+Bing Chat & 58.7\% & 89.5\% \\
+NeevaAI & 67.6\% & 72.0\% \\
+perplexity.ai & 68.7\% & 72.7\% \\
+YouChat & 11.1\% & 63.6\% \\
+\midrule
+\textbf{Mean (4 engines)} & \alert{\textbf{51.5\%}} & \alert{\textbf{74.5\%}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Across 1{,}450 statements:} Pearson \(r = -0.96\) between citation precision and the perceived fluency/utility of the answer. Better-sounding answers cite worse.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu, Zhang \& Liang (2023), Tables~3\textendash 4; human eval over four generative search engines, May 2023.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAZWINSKA 2024 ----------
+\begin{frame}{ChatGPT Search misattributed 153 of 200 publisher quotes \textemdash{} and declined only 7 times}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{2.8cm}p{3.4cm}@{}}
+\toprule
+\textbf{Response category} & \textbf{Count / 200} & \textbf{Share} \\
+\midrule
+Correct (publisher + date + URL) & 47 & 23.5\% \\
+Partially correct & 57 & 28.5\% \\
+\textbf{Wrong} & \alert{89} & \alert{44.5\%} \\
+Declined / unsure & 7 & 3.5\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+Even publishers \emph{with} OpenAI licensing deals were misattributed. NYT (in active lawsuit, blocked) was cited via plagiarized copies.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2024), \emph{Tow Center / CJR}, Nov.\ 2024; 200 quotes, 20 publishers.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAZWINSKA 2025 ----------
+\begin{frame}{Across 8 chatbots, premium tiers are \emph{more} confidently wrong}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.8cm}p{4.0cm}@{}}
+\toprule
+\textbf{Engine} & \textbf{Inaccuracy} & \textbf{Behavior} \\
+\midrule
+Perplexity (free) & \textcolor{Teal}{\textbf{37\%}} & best of eight \\
+ChatGPT Search & 67\% & hedged 15/200 \\
+Perplexity Pro (paid) & higher & decline rate falls \\
+Gemini & high & fabricated URLs frequent \\
+DeepSeek & high & misattributed 115/200 \\
+\textbf{Grok 3 (paid)} & \alert{\textbf{94\%}} & 154/200 broken URLs \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Paid tiers answer \emph{more} prompts confidently \textemdash{} so they make \emph{more} confident errors. Robots.txt routinely violated.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2025), \emph{CJR}, Mar.\ 2025; 1{,}600 queries (20 publishers $\times$ 10 quotes $\times$ 8 chatbots).}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 2 ----------
+\transitionslide{The economic price falls on the source}{Direct answers are paid for in someone else's traffic.}
+
+% ============================================================
+%  SECTION B \textemdash{} ECONOMIC SPILLOVER (KHOSRAVI, LARSEN)
+% ============================================================
+
+% ---------- KHOSRAVI 2026 ----------
+\begin{frame}{AI summaries cut Wikipedia pageviews $\sim$15\%, costing \$35.7M\textendash \$102.1M per year}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{Estimate} & \textbf{Source} \\
+\midrule
+Pageview decline (post-AI summaries) & \alert{$-15\%$} & DiD, 2024\textendash 25 \\
+Annual donation revenue at risk & \$35.7M\textendash \$102.1M & extrapolation \\
+Editor-recruitment funnel & weaker & traffic-volunteer link \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{The first feedback loop:} fewer readers $\rightarrow$ fewer donations and editors $\rightarrow$ a thinner Wikipedia $\rightarrow$ a thinner training corpus.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Khosravi et al.\ (2026); pageview DiD around AI Overviews / Search GPT rollouts.}
+\end{flushright}
+\end{frame}
+
+% ---------- LARSEN 2025 ----------
+\begin{frame}{Sponsored-search auctions splinter: short-query CPC $+1.5\%$, long-query CPC $-2.5\%$}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Query length} & \textbf{$\Delta$ CPC (BERT)} & \textbf{Mechanism} \\
+\midrule
+Short (1\textendash 2 tokens) & \alert{$+1.5\%$} & better intent match $\rightarrow$ tighter rivalry \\
+Long-tail (5+ tokens) & \alert{$-2.5\%$} & query absorbed by AI answer \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{The second feedback loop:} the highest-intent traffic that publishers monetized via long-tail SEO is exactly what AI answers consume \textemdash{} so its auction price falls.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Larsen et al.\ (2025); 11{,}949 queries $\times$ 24 months SEMRush panel; BERT rollout DiD.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 3 ----------
+\transitionslide{Creators adapt \textemdash{} and the well gets polluted}{Optimization moves on. The optimization target is now an AI.}
+
+% ============================================================
+%  SECTION C \textemdash{} ADAPTATION AND LOOP POLLUTION (AGGARWAL, LIANG)
+% ============================================================
+
+% ---------- AGGARWAL 2024 ----------
+\begin{frame}{Adding a single quotation lifts AI-engine visibility by 41\%}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.8cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{GEO tactic} & \textbf{$\Delta$ visibility} & \textbf{Cost to publisher} \\
+\midrule
+\textbf{Quotation Addition} & \alert{$+41\%$} & low (one edit) \\
+Statistics Addition & $+32\%$ & low \\
+Authoritative tone & $+30\%$ & stylistic only \\
+Citing Sources & $+27\%$ & low \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Generative Engine Optimization} (GEO) is now a discipline. The new ranking signal rewards \emph{quotability}, not authority \textemdash{} so creators feed the engine what it likes.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Aggarwal et al.\ (2024), \emph{KDD '24}; benchmark of 9 GEO tactics on 10K queries.}
+\end{flushright}
+\end{frame}
+
+% ---------- LIANG 2025 ----------
+\begin{frame}{By late 2024, $\sim$24\% of corporate press releases and $\sim$18\% of CFPB complaints are LLM-written}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Corpus} & \textbf{LLM share} & \textbf{Sample (N)} \\
+\midrule
+Corporate press releases & \alert{$\sim$24\%} & 537{,}413 \\
+Consumer complaints (CFPB) & $\sim$18\% & 687{,}241 \\
+UN press releases & $\sim$14\% & 15{,}919 \\
+Small-firm job postings & $\sim$10\textendash 15\% & 1.44M \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Distributional MLE; prediction error \(<3.3\%\); \emph{lower bound} (heavy edits invisible). The corpus on which the next models train is increasingly authored \emph{by} models.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liang et al.\ (2025), \emph{Patterns}; four corpora, Jan 2019\textendash Sep 2024.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{Devil's advocate: aren't most queries the kind where citations don't matter?}
+\begin{block}{The strongest objection}
+For ``what time is the show,'' ``capital of Peru,'' ``recipe for risotto,'' AI answers users more cheaply than ten blue links \textemdash{} and a wrong citation costs nothing.
+\end{block}
+\textbf{Reply.} Three problems with the carve-out:
+\begin{itemize}
+\item Liu (2023): \(r = -0.96\) between fluency and citation precision \textemdash{} users have \emph{no signal} that flips them from ``trust'' to ``verify.''
+\item Jazwinska (2025): premium-tier engines decline less, so confident wrongness rises with willingness to pay.
+\item Khosravi (2026) + Larsen (2025): even ``trivial'' queries strip the long-tail traffic that funds the verifiable corpus.
+\end{itemize}
+The cheap query subsidises the expensive one. Sever the cross-subsidy, both fail.
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Potthast's prophecy is now a self-reinforcing loop with five turns of the crank}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{0.8cm}>{\RaggedRight\arraybackslash}p{3.8cm}>{\RaggedRight\arraybackslash}p{7.0cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Turn} & \textbf{Empirical anchor} \\
+\midrule
+1 & Citations decay & Liu 2023: precision\,74.5\%, recall\,51.5\%, $r\!=\!-0.96$ \\
+2 & Misattribution scales & Jazwinska 24/25: 60\%\textendash 94\% wrong (8 engines) \\
+3 & Page views collapse & Khosravi 2026: $-15\%$ Wikipedia traffic \\
+4 & Ad auctions reprice & Larsen 2025: $-2.5\%$ long-tail CPC \\
+5 & Synthetic content fills gap & Aggarwal 24 (GEO $+41\%$); Liang 25 ($\sim$24\% PR) \\
+\bottomrule
+\end{tabular}
+\end{center}
+The training corpus that produced the model is being eroded by the model. Each turn cheapens the next.
+\end{frame}
+
+% ---------- CLOSING ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{Direct answers are not free.}}\\[0.6cm]
+{\Large\textcolor{LightGray}{They are an externality on the web that produced them.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
