@@ -2,7 +2,7 @@ TASK: Build a compiled Beamer deck synthesizing two (or more) audit notes
 already in /claudework, then push to main.
 
 INPUTS
-- i have uploaded a screenshot where the  name papers to work on is written and then source notes from claudework 
+- i have uploaded a screenshot where the  name papers to work on is written and then source those paper notes from claudework 
 - Output filename: <Topic>_Deck.tex (and matching .pdf) in /claudework 
 
 INVOKE THE SKILL
