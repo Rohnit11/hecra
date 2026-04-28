@@ -1,0 +1,345 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Lopsided Diffusion}}
+\subtitle{Three Asymmetries in How Generative AI Reaches the World}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Padilla, Lam, Lambrecht \& Hollenbeck (2025), \emph{Working Paper} \quad\textbar\quad
+Liu, Huang \& Wang (2025), \emph{World Bank / Rice}\\
+Ide \& Talam\`{a}s (2025), \emph{Journal of Political Economy} 133(12):3762\textendash3797}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{$-41.8\%$ \,\textbar\, $24\%\,/\,0.7\%$ \,\textbar\, individual at $z_{AI}$ always loses}}\\[0.5cm]
+{\large\textcolor{DeepNavy}{small-site traffic \,\textbar\, HIC vs.\ LIC penetration \,\textbar\, theoretical wage}}\\[1.0cm]
+{\Large\textcolor{WarmGray}{The aggregate adoption curve is rising. The distribution beneath it is not.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Padilla et al.\ (2025), Table~7; Liu et al.\ (2025), p.~22; Ide \& Talam\`{a}s (2025), Proposition~5.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Three lenses on diffusion \textemdash{} same direction, three asymmetries}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{5.8cm}@{}}
+\toprule
+\textbf{Lens} & \textbf{What is uneven} & \textbf{Quantified asymmetry} \\
+\midrule
+\textbf{Behavior} & What adopters substitute (Padilla 2025) & Long queries $-37.2\%$, education $-89.3\%$, social media $\approx 0$ \\
+\textbf{Geography} & Who gets to adopt (Liu 2025) & HIC penetration 24\%, LIC 0.7\%; log-GDP elasticity $0.6$\textendash$0.8$ \\
+\textbf{Theory} & Where the gains land (Ide 2025) & Winners at the extremes; $w^*(z_{AI})<w(z_{AI})$ always \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The aggregates conceal three different distributions of who gains, who substitutes, and who is left out.
+\end{frame}
+
+% ---------- TRANSITION 1 ----------
+\transitionslide{Lens 1 \textemdash{} Behavior}{which sites and which queries get substituted}
+
+% ============================================================
+%  SECTION A \textemdash{} PADILLA ET AL. 2025 (BEHAVIOR)
+% ============================================================
+
+% ---------- PADILLA: SEARCH HEADLINE ----------
+\begin{frame}{LLM adopters cut search by 21.7\%, but the cut is concentrated in informational queries}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{2.4cm}p{2.4cm}p{2.4cm}@{}}
+\toprule
+\textbf{Search type (Table~5)} & \textbf{ATT} & \textbf{Pre-mean} & \textbf{\% change} \\
+\midrule
+All search & $-7.08$** & $32.67$ & $-21.7\%$ \\
+Google only & $-5.57$* & $17.68$ & $-31.5\%$ \\
+Question searches & $-1.26$*** & $3.78$ & $-33.2\%$ \\
+Long ($\geq 6$ words) & $-2.47$*** & $6.63$ & \alert{$-37.2\%$} \\
+Pure navigational & $-0.24$ n.s. & $0.80$ & \textemdash \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Effects emerge $\sim$20 weeks post-adoption \textemdash{} a learning period before substitution. Staggered DiD (Callaway--Sant'Anna 2021); $N=2{,}041$ adopters; Comscore desktop panel.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Padilla et al.\ (2025), Tables~4\textendash 5; ATT for weeks 20\textendash 47.}
+\end{flushright}
+\end{frame}
+
+% ---------- PADILLA: SITE-LEVEL ASYMMETRY ----------
+\begin{frame}{The substitution falls hardest on small sites and education \textemdash{} not on the social web}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.6cm}p{2.6cm}p{2.4cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{ATT} & \textbf{Pre-mean} & \textbf{\% change} \\
+\midrule
+Bottom-25\% websites (Tab~7) & \alert{$-482.3$**} & $1{,}154.3$ & $-41.8\%$ \\
+All education sites (Tab~9) & \alert{$-151.5$**} & $169.7$ & $-89.3\%$ \\
+Stack Overflow (Tab~10) & $-0.65$* & $0.94$ & $-68.8\%$ \\
+Wikipedia / Reddit (Tab~10) & both n.s. & \textemdash & \textemdash \\
+Display ads (Tab~11) & $-122.2$* & $161.1$ & $-72.9\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Top-500 sites unaffected ($+349.0$ n.s.). Long-tail informational supply gets cannibalized; social, navigational, and short-query traffic is spared.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Padilla et al.\ (2025), Tables~6\textendash 11.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 2 ----------
+\transitionslide{Lens 2 \textemdash{} Geography}{who is allowed onto the curve at all}
+
+% ============================================================
+%  SECTION B \textemdash{} LIU ET AL. 2025 (GEOGRAPHY)
+% ============================================================
+
+% ---------- LIU: PENETRATION ----------
+\begin{frame}{ChatGPT traffic +113\% YoY \textemdash{} but penetration ranges from 24\% in HIC to 0.7\% in LIC}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{1.6cm}p{2.4cm}p{2.4cm}p{2.4cm}p{2.6cm}@{}}
+\toprule
+\textbf{Group} & \textbf{Apr 2024 (M)} & \textbf{Apr 2025 (M)} & \textbf{User growth} & \textbf{Penetration} \\
+\midrule
+HIC & $1{,}142$ & $2{,}545$ & $+43\%$ & \alert{$24\%$} \\
+UMC & $490$ & $1{,}000$ & $+42\%$ & $5.8\%$ \\
+LMC & $422$ & $816$ & $+37\%$ & $4.7\%$ \\
+LIC & $2.3$ & $\sim 10$ & small base & \alert{$0.7\%$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Decomposition: $+113\% = (1{+}0.42)(1{+}0.50)\!-\!1$ \textemdash{} extensive ($+42\%$ users) and intensive ($+50\%$ visits per user) margins both contribute. Authors (p.~26): ``the widening divide is \ldots{} more about adoption itself.''
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu, Huang \& Wang (2025), Section~4; Semrush panel, Dec 2022\textendash mid-2025.}
+\end{flushright}
+\end{frame}
+
+% ---------- LIU: OLS + LOCALIZATION ----------
+\begin{frame}{Log GDP per capita predicts adoption with elasticity $0.6$\textendash$0.8$; Google has saturated}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.2cm}p{2.0cm}p{2.0cm}p{2.0cm}p{2.0cm}@{}}
+\toprule
+\textbf{OLS coefficient} & \textbf{ChatGPT} & \textbf{Gemini} & \textbf{Claude} & \textbf{Google} \\
+\midrule
+log GDP per capita & \alert{$0.62$***} & \alert{$0.79$***} & \alert{$0.63$***} & $0.16$* \\
+\% pop.\ on internet & $0.031$*** & $0.017$ & $0.019$** & $-0.012$** \\
+$R^2$ & $0.67$ & $0.55$ & $0.61$ & $0.12$ \\
+$N$ countries & $153$ & $118$ & $131$ & $164$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Localization is real:} Le Chat $69\%$ of traffic from Europe; Doubao and Tencent Yuanbao $>90\%$ domestic. Authors: ``correlation, not causation'' (p.~29).
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu et al.\ (2025), Table~4 (p.~29); Figure~17.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 3 ----------
+\transitionslide{Lens 3 \textemdash{} Theory}{why the gains land at the extremes}
+
+% ============================================================
+%  SECTION C \textemdash{} IDE \& TALAMAS 2025 (THEORY)
+% ============================================================
+
+% ---------- IDE: SETUP ----------
+\begin{frame}{Garicano hierarchies + compute: AI agents at exogenous knowledge $z_{AI}\in[0,1)$}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}>{\RaggedRight\arraybackslash}p{8.8cm}@{}}
+\toprule
+\textbf{Object} & \textbf{Definition} \\
+\midrule
+$z\sim G$ on $[0,1]$ & Human knowledge; partition into $W$ (workers), $I$ (independents), $S$ (solvers) \\
+$h<h_0$ & Solver time per question; admits two-layer firms \\
+$m$ (compute) & Abundant; 1 unit $\to$ 1 AI agent of fixed knowledge $z_{AI}$ \\
+Autonomous AI & Agent acts as worker AND solver; nonautonomous = copilot only \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Prop 2.} $r^*\!=\!z_{AI}$. If $z_{AI}\!\in\!\text{int}\,W$, basic AI; if $z_{AI}\!\in\!\text{int}\,S$, advanced AI \textemdash{} displacement direction flips.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Ide \& Talam\`{a}s (2025), \emph{JPE}; pure theory; Props.\ 1\textendash 2.}
+\end{flushright}
+\end{frame}
+
+% ---------- IDE: PROP 5 WINNERS AT EXTREMES ----------
+\begin{frame}{Proposition 5: winners at the extremes; the individual at $z_{AI}$ always loses}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.6cm}>{\RaggedRight\arraybackslash}p{8.0cm}@{}}
+\toprule
+\textbf{Set} & \textbf{When non-empty} \\
+\midrule
+$T=(z_t,1]$ (top winners) & \textcolor{Teal}{\textbf{Always}} non-empty under $h<h_0$, $z_{AI}<1$ \\
+$B=[0,z_b)$ (bottom winners) & Non-empty \alert{iff} $z_{AI}>\bar z_{AI}\in\text{int}\,W$ \\
+$\{z_{AI}\}$ (pivot individual) & \alert{$w^*(z_{AI})<w(z_{AI})$} \emph{always} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+\textbf{The shape of the welfare curve is a U with a cliff at $z_{AI}$.} The least knowledgeable gain only when AI is capable enough; the most knowledgeable always gain; the human who does exactly what the AI does is uniformly displaced.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Ide \& Talam\`{a}s (2025), Proposition~5, p.~3788.}
+\end{flushright}
+\end{frame}
+
+% ---------- IDE: PROP 6 + RECONCILIATION ----------
+\begin{frame}{Output ranking: autonomous AI $>$ nonautonomous $>$ no AI \textemdash{} regulation trades output for inequality}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.4cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{4.4cm}@{}}
+\toprule
+\textbf{Regime} & \textbf{Best for least-knowledgeable} & \textbf{Best for most-knowledgeable} \\
+\midrule
+Autonomous AI & only if $z_{AI}>\bar z_{AI}$ & \textcolor{Teal}{always} \\
+Nonautonomous AI & \textcolor{Teal}{always}, if $z_{AI}>w(0)$ & dominated by autonomous \\
+No AI & \textemdash & \textemdash \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Reconciles micro evidence:} copilot RCTs (Brynjolfsson--Li--Raymond 2025) map to nonautonomous $\to$ help the bottom. Coworker deployments (Klarna; Alekseeva 2024) map to basic autonomous $\to$ displace the bottom. Same AI is ``basic'' in HIC and ``advanced'' in LIC \textemdash{} direction flips by economy.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Ide \& Talam\`{a}s (2025), Prop.~6; \S VII, pp.~3791\textendash 3796.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{Devil's advocate: aren't these three lenses measuring different things at different times?}
+\begin{block}{The strongest objection}
+Padilla is desktop-only, US-skewed, $N\!=\!2{,}041$. Liu is web-traffic only \textemdash{} no API, mobile, or enterprise. Ide is pure theory with $z_{AI}<1$. Maybe the asymmetries are artifacts of measurement.
+\end{block}
+\textbf{Reply.} The lenses converge because they measure complementary slices of one substitution:
+\begin{itemize}
+\item Padilla's bottom-25\% sites and education $=$ Ide's $z<z_{AI}$ long-tail informational supply.
+\item Liu's $0.6$\textendash$0.8$ log-GDP elasticity says $z_{AI}$'s relative position is country-specific.
+\item Ide's pivot at $z_{AI}$ explains why Stack Overflow falls $-68.8\%$ but Reddit does not.
+\end{itemize}
+The asymmetry is structural, not measurement noise.
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{The diffusion is lopsided in three layered ways \textemdash{} they compound, they do not cancel}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.4cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{Asymmetry} & \textbf{Compound effect} \\
+\midrule
+\textbf{Behavior} & Long-tail informational supply substituted, social web spared & Site economics flip for the bottom 4.5M websites \\
+\textbf{Geography} & HIC adopt; LIC do not & Where $z_{AI}$ sits in the local skill distribution differs by country \\
+\textbf{Theory} & Welfare U-shape with cliff at $z_{AI}$ & The cliff lands on different occupations in HIC vs.\ LIC \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The same AI cannot be expected to produce the same outcomes across users, countries, or skill bands. Aggregation hides the cliff.
+\end{frame}
+
+% ---------- CLOSING ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{The curve is rising.}}\\[0.6cm]
+{\Large\textcolor{LightGray}{Beneath it, the cliff is rising too.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
