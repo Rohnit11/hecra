@@ -1,0 +1,347 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Contestable Frontier}}
+\subtitle{Three Lenses on Why GenAI Markets Resist Concentration \textemdash{} and the Catches}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Carugati (2023), \emph{Bruegel WP 14/2023} \quad\textbar\quad
+Jagadeesan, Jordan \& Steinhardt (2025), \emph{PNAS} 122(42):e2510004122\\
+Zhang et al.\ (2024), \emph{Working Paper} (Mihuashi / NovelAI leak)}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{$-64\%$ \,\textbar\, $+121\%$ \,\textbar\, $+56\%$}}\\[0.4cm]
+{\large\textcolor{DeepNavy}{prices \,\textbar\, volume \,\textbar\, revenue, when AI flooded a creative-goods market.}}\\[0.4cm]
+{\large\textcolor{DeepNavy}{Incumbent human artists captured \textbf{97.4\%} of post-leak orders.}}\\[1.0cm]
+{\Large\textcolor{WarmGray}{The concentration narrative misreads the frontier. Markets contest before they tip.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Zhang et al.\ (2024); NovelAI Stable Diffusion leak, Mihuashi platform, $\sim$197{,}000 orders, 5 months post-shock.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Three lenses on whether GenAI markets will concentrate \textemdash{} and three different ``no, but''s}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.8cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.0cm}@{}}
+\toprule
+\textbf{Lens} & \textbf{Verdict on concentration} & \textbf{Catch} \\
+\midrule
+\textbf{Policy} & Today's FM market \emph{competitive} (Carugati 2023) & 5 future risks: leverage, license refusal, scraping, lock-in, collusion \\
+\textbf{Theory} & Asymmetric safety lowers entry (Jagadeesan 2025) & Race-to-the-bottom on safety \\
+\textbf{Empirics} & Output market \emph{expanded} (Zhang 2024) & Prices crushed; gains low-end only \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The frontier is contestable now. Whether it stays so depends on what gets regulated and how.
+\end{frame}
+
+% ---------- TRANSITION 1 ----------
+\transitionslide{Lens 1 \textemdash{} Policy: today's market is competitive}{but the future tail is heavy}
+
+% ============================================================
+%  SECTION A \textemdash{} CARUGATI 2023 (POLICY)
+% ============================================================
+
+% ---------- CARUGATI: PRESENT ----------
+\begin{frame}{The FM value chain has three inputs \textemdash{} and all three are currently competitive}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.2cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}@{}}
+\toprule
+\textbf{Input} & \textbf{Status (mid-2023)} & \textbf{Why} \\
+\midrule
+\textbf{Language models} & multiple closed + open & Anthropic, Meta, Mistral, BAAI, OpenAI, Google \\
+\textbf{Data} & diverse open + proprietary & Common Crawl, GitHub, scraped + licensed \\
+\textbf{Compute} & vigorous despite top-3 & AWS, Azure, GCP compete \\
+\bottomrule
+\end{tabular}
+\end{center}
+Entry barriers ``low or surmountable'' \textemdash{} small models (SLMs) and Low-Rank Adaptation (LoRA, Hu et al.\ 2021) collapse training cost.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Carugati (2023), Bruegel WP 14/2023, Section 2; pre-DeepSeek.}
+\end{flushright}
+\end{frame}
+
+% ---------- CARUGATI: FIVE FUTURE RISKS ----------
+\begin{frame}{Five tipping mechanisms could lock in incumbents tomorrow}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.6cm}>{\RaggedRight\arraybackslash}p{8.0cm}@{}}
+\toprule
+\textbf{Risk} & \textbf{Mechanism} \\
+\midrule
+\textbf{Leverage} & Dominant firm extends LM/cloud control into adjacent products \\
+\textbf{License refusal} & Closed-LM holders deny competing application developers \\
+\textbf{Data lock-out} & Refusal to grant data access; scraping wars \\
+\textbf{Switching costs} & User lock-in via memory, context, integrated workflow \\
+\textbf{Algorithmic collusion} & LMs converge on tacit pricing or content rules \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Carugati's policy ask: protect open- vs.\ closed-source competition; do \emph{not} regulate open-source so heavily that closed-source incumbents win by default.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Carugati (2023), Section 3 (competition issues), Section 5 (policy recommendations).}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 2 ----------
+\transitionslide{Lens 2 \textemdash{} Theory: asymmetric safety \emph{helps} entrants}{the very thing that protects users opens the door}
+
+% ============================================================
+%  SECTION B \textemdash{} JAGADEESAN ET AL. 2025 (THEORY)
+% ============================================================
+
+% ---------- JAGADEESAN: SETUP ----------
+\begin{frame}{Two firms, two objectives \textemdash{} entrant exploits a weaker safety threshold}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.8cm}>{\RaggedRight\arraybackslash}p{8.8cm}@{}}
+\toprule
+\textbf{Object} & \textbf{Definition} \\
+\midrule
+$\alpha \in [0.5,1]$ & Share of data labeled with performance (vs.\ safety) objective \\
+$\rho \in [0,1)$ & Correlation between $\beta_1$ (perf) and $\beta_2$ (safety) regressors \\
+$\tau_I, \tau_E$ & Safety constraints; \alert{$\tau_E > \tau_I$} (regulatory asymmetry) \\
+$\nu = 0.34$ & Single-objective scaling exponent, calibrated to Chinchilla \\
+$N_E^*$ & Min.\ entrant data to match incumbent at $\tau_E$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Theorem 1.} Entrant can enter with \emph{finite} data even at $N_I\!=\!\infty$, if $\tau_I$ binds and $\rho<1$.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jagadeesan, Jordan \& Steinhardt (2025), \emph{PNAS}; pure theory, no data.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAGADEESAN: SCALING REGIMES ----------
+\begin{frame}{Multi-objective scaling exponent collapses as data grows: $0.34\!\to\!0.25\!\to\!0$}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{1.4cm}>{\RaggedRight\arraybackslash}p{4.6cm}>{\RaggedRight\arraybackslash}p{2.4cm}>{\RaggedRight\arraybackslash}p{2.6cm}@{}}
+\toprule
+\textbf{Regime} & \textbf{Range of $N$} & \textbf{$\nu^*$ (Thm 2)} & \textbf{Calibrated} \\
+\midrule
+1 & $N \leq (1\!-\!\alpha)^{-1/\nu}(1\!-\!\rho)^{-1/\nu}$ & $\nu$ & $0.34$ \\
+2 & intermediate & $\nu/(\nu\!+\!1)$ & $0.25$ \\
+3 & $N \geq (1\!-\!\alpha)^{-(2+\nu)/\nu}(1\!-\!\rho)^{-1/\nu}$ & $\mathbf{0}$ & \alert{$0$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+\textbf{Theorem 4 corollary.} $N_E^* = \Theta(N_I^c)$, where $c\!=\!1\!\to\!0.75\!\to\!0$ as $N_I\!\to\!\infty$.
+Past a threshold, more incumbent data buys nothing the entrant can't match cheaply.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jagadeesan et al.\ (2025), Theorems~2, 4; calibration to Hoffmann et al.\ (2022) Chinchilla scaling.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAGADEESAN: CATCH ----------
+\begin{frame}{The mechanism that lowers barriers also tempts a race-to-the-bottom on safety}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.0cm}>{\RaggedRight\arraybackslash}p{7.6cm}@{}}
+\toprule
+\textbf{Theorem 5 finding} & \textbf{Implication} \\
+\midrule
+$N_E^*\!=\!\Theta(D^{-c})$, $D\!=\!G_I\!-\!G_E$ & As safety thresholds converge, entry threshold \emph{explodes} \\
+$c$ rises from $1/\nu$ ($\!=\!2.94$) to $(\nu'\!+\!1)/\nu'$ as $D\!\downarrow$ & Entrant must dataset-scale ever harder \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+\textbf{Policy corner.} Stricter incumbent-only safety regulation (DSA's VLOP $\geq$ 45M users; FTC investigations) \emph{lowers} entry barriers \textemdash{} but only if entrants' weaker safety is socially tolerable. Otherwise the gap closes and entry collapses.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jagadeesan et al.\ (2025), Theorem~5; Section ``Implications,'' p.\ 9.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 3 ----------
+\transitionslide{Lens 3 \textemdash{} Empirics: a downstream market \emph{expanded}}{but the price compression was severe}
+
+% ============================================================
+%  SECTION C \textemdash{} ZHANG ET AL. 2024 (NOVELAI/MIHUASHI)
+% ============================================================
+
+% ---------- ZHANG: PRICE/VOLUME/REVENUE ----------
+\begin{frame}{When AI flooded a creative-goods market, prices fell 64\% but revenue rose 56\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.0cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Outcome (DiD, TWFE)} & \textbf{Estimate} & \textbf{Effect size} \\
+\midrule
+Average price & \alert{$-646.5$ yuan} & $-64\%$ \\
+Weekly volume & \alert{$+140.3$ orders} & $+121\%$ \\
+Weekly revenue & \alert{$+56{,}674$ yuan} & $+56\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Treatment: tachie (anime character art). Control: wallpaper. Shock: NovelAI Stable Diffusion leak, 4chan, October 6, 2022. All coefficients significant at $1\%$.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Zhang et al.\ (2024), Table~2; Mihuashi platform, Jan 2022\textendash Feb 2023; $N=126$ category-weeks.}
+\end{flushright}
+\end{frame}
+
+% ---------- ZHANG: INCUMBENT SHARE ----------
+\begin{frame}{Incumbent human artists captured 97.4\% of post-leak orders \textemdash{} they adapted, they were not displaced}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.4cm}p{3.0cm}@{}}
+\toprule
+\textbf{Margin} & \textbf{Incumbents} & \textbf{New entrants} \\
+\midrule
+Post-leak orders & \textcolor{Teal}{\textbf{97.4\%}} & 2.6\% \\
+Post-leak revenue & \textcolor{Teal}{\textbf{97.96\%}} & 2.04\% \\
+\midrule
+Log volume, personal commissions & $+2.95$ & \textemdash \\
+Log volume, commercial commissions & $+0.39$ & \textemdash \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Expansion happened low-end:} new personal buyers, not displaced commercial demand. Incumbents cut prices and raised volume \textemdash{} adaptation, not wipeout.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Zhang et al.\ (2024), Tables~3\textendash 4.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{Devil's advocate: aren't all three findings just early-stage snapshots?}
+\begin{block}{The strongest objection}
+Carugati (2023) is pre-DeepSeek; Jagadeesan (2025) has \emph{no data}; Zhang (2024) is 5 months, one platform, $N=126$. The frontier might be contestable today and concentrated tomorrow.
+\end{block}
+\textbf{Reply.} The synthesis is not that concentration won't happen; it is that \emph{whether} it happens depends on the policy choices each lens names:
+\begin{itemize}
+\item Carugati: regulators must protect open-source from over-restriction.
+\item Jagadeesan: $\tau_E>\tau_I$ is the lever; Theorem 5 shows converging $\tau$s collapse entry.
+\item Zhang: low-end expansion is real, but supplier surplus depends on platform fees.
+\end{itemize}
+The frontier is contestable \emph{conditional on} these levers. Pull them wrong, the market tips.
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{The frontier is contestable today \textemdash{} the policy levers that decide tomorrow are explicit}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{5.4cm}@{}}
+\toprule
+\textbf{Lens} & \textbf{Today's signal} & \textbf{Lever that decides tomorrow} \\
+\midrule
+\textbf{Policy} & 3 inputs competitive & Open-source carve-out from regulation \\
+\textbf{Theory} & $\tau_E\!>\!\tau_I$ admits finite-$N$ entry & Whether $\tau$ asymmetry persists \\
+\textbf{Empirics} & Prices $-64\%$, volume $+121\%$ & Platform fee structure on low-end orders \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The same three levers work either way. The market does not concentrate by physics; it concentrates by choice.
+\end{frame}
+
+% ---------- CLOSING ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{Concentration is not a forecast.}}\\[0.6cm]
+{\Large\textcolor{LightGray}{It is a policy choice the frontier has not yet made.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
