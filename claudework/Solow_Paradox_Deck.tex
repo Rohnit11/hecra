@@ -1,0 +1,350 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\title{\textbf{The Solow Paradox of Generative AI}}
+\subtitle{Wages Flat, Postings Down, the Commons Hollowing Out}
+\author{Audit synthesis}
+\date{}
+
+\begin{document}
+
+% ---------- TITLE ----------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Humlum \& Vestergaard (2025), \emph{BFI WP 2025-56} \quad\textbar\quad
+Liu, X.\ (2025), \emph{Working Paper}\\
+Burtch, Lee \& Chen (2024), \emph{Scientific Reports} 14:10413 \quad\textbar\quad
+Lyu et al.\ (2025), \emph{WWW Companion '25} (Acemoglu et al.)}
+\end{center}
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{``You can see the computer age everywhere}}\\
+{\large\textcolor{WarmGray}{but in the productivity statistics.''}}\\[0.2cm]
+{\footnotesize\textcolor{WarmGray}{\textemdash{} Solow (1987), invoked by Humlum (2025) at p.\ 22.}}\\[1.0cm]
+{\Huge\bfseries\textcolor{DeepRed}{$0\%$ \,\textbar\, $-19\%$ \,\textbar\, $-12\%$ \,\textbar\, $-29{,}013$}}\\[0.6cm]
+{\large\textcolor{DeepNavy}{wage effect on incumbents \,\textbar\, entry postings (Y3) \,\textbar\, Stack Overflow traffic \,\textbar\, Wikipedia views/article}}\\[0.6cm]
+{\Large\textcolor{WarmGray}{The aggregates show nothing. The pipeline and the commons say otherwise.}}
+\end{center}
+\vfill
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Three places to look for displacement \textemdash{} only one shows zero}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.6cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.2cm}@{}}
+\toprule
+\textbf{Where to look} & \textbf{What it measures} & \textbf{Signal} \\
+\midrule
+\textbf{Incumbent wages \& hours} & Pass-through of productivity to pay & \textcolor{Teal}{\textbf{Zero}} (Humlum 2025) \\
+\textbf{New-hire demand} & Postings, hires, vacancy mix & \alert{$-12$\% to $-19$\%} (Liu 2025) \\
+\textbf{Knowledge commons} & Q\&A traffic, edits, contributions & \alert{Hollowing} (Burtch 24; Lyu 25) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Stocks (incumbents) look fine. Flows (entry, contribution) do not.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 1 ----------
+\transitionslide{Incumbents look untouched}{Adoption is wide. Pass-through is narrow.}
+
+% ============================================================
+%  SECTION A \textemdash{} HUMLUM (DENMARK, PRECISE ZEROS)
+% ============================================================
+
+% ---------- HUMLUM: ADOPTION VS PASS-THROUGH ----------
+\begin{frame}{Adoption ran from 47\% to 83\%. Pass-through to earnings was 3\textendash 7\%.}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Margin} & \textbf{No encourage.} & \textbf{Encouraged} \\
+\midrule
+``Ever used'' AI chatbot & 47\% & \alert{83\%} \\
+Daily use & 8\% & 21\% \\
+Time savings (\% of work hours) & $\sim$2.0\% & 2.8\textendash 6.8\% \\
+\textbf{Pass-through to earnings} & \textcolor{Teal}{\textbf{$\sim$3\%}} & \textcolor{Teal}{\textbf{$\sim$7\%}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Workers \emph{used} the tool. Time \emph{was} saved. Almost none of it landed in pay.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Humlum \& Vestergaard (2025), Tables~1\textendash 2; Figs.\ 2, 4, 10. \(N\!\approx\!25{,}000\) workers, 11 occupations.}
+\end{flushright}
+\end{frame}
+
+% ---------- HUMLUM: PRECISE ZEROS ----------
+\begin{frame}{Across 11 exposed occupations, the dynamic DiD rules out wage effects above 1\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Specification} & \textbf{CI on \% wage effect} & \textbf{F or N} \\
+\midrule
+Dynamic DiD (Fig.\ 7) & rules out $>$2\% & N $\approx$ 25K \\
+Pooled DiD ``All'' (Fig.\ 8a) & rules out $>$1\% & 11 occs \\
+Per-occupation pooled & rules out $>$6\% & each \\
+Coworker IV (Tab.\ E.1) & confirms OLS & F\,=\,3{,}645 \\
+Workplace-level DiD (Fig.\ 11) & rules out $>$1\% & wage bill \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Same answer in five different cuts. Adopters, encouraged adopters, daily users, early adopters, and high-adoption workplaces are all statistically indistinguishable from controls.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Humlum \& Vestergaard (2025), Figs.\ 7\textendash 11; admin data through June 2024.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 2 ----------
+\transitionslide{But the door is closing on new hires}{What incumbents kept, entrants will not get.}
+
+% ============================================================
+%  SECTION B \textemdash{} LIU 2025 (LIGHTCAST POSTINGS)
+% ============================================================
+
+% ---------- LIU: DYNAMIC EFFECTS ----------
+\begin{frame}{Job postings in AI-substitutable occupations fell 12\% on average \textemdash{} and the effect is widening}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{3.0cm}p{3.6cm}@{}}
+\toprule
+\textbf{Horizon (post-ChatGPT)} & \textbf{$\Delta$ postings} & \textbf{SE / sig.} \\
+\midrule
+Pooled average & \alert{$-12.2\%$} & 0.036 (***) \\
+Year 1 (2023) & $-6.4\%$ & $\sim$0.036 (*) \\
+Year 2 (2024) & $-13.5\%$ & $\sim$0.036 (**) \\
+\textbf{Year 3 (2025)} & \alert{\textbf{$-18.2\%$}} & 0.036 (***) \\
+\bottomrule
+\end{tabular}
+\end{center}
+Decile\,$\times$\,quarter FEs absorb exposure level; identified margin is \emph{substitutability}. Pre-trend Wald: F\,=\,0.83, p\,=\,0.66.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu (2025), Table~1, Col.~3; 285M Lightcast postings, $N\!=\!6{,}753{,}930$ cells, 2018Q1\textendash 2025Q2.}
+\end{flushright}
+\end{frame}
+
+% ---------- LIU: HETEROGENEITY ----------
+\begin{frame}{Entry-level and administrative postings absorb the entire decline}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Slice} & \textbf{$\Delta$ postings} & \textbf{Note} \\
+\midrule
+\textbf{Entry-level} & \alert{$-19\%$} & largest age effect \\
+Mid-level & smaller & attenuates \\
+Senior & near zero & insulated \\
+\midrule
+Administrative support & \alert{$-40\%$} & sectoral peak \\
+Professional services & $-30\%$ & second largest \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The earnings of incumbent senior workers are stable. The \emph{path into} those jobs is not.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu (2025), heterogeneity analysis; experience and 2-digit industry interactions.}
+\end{flushright}
+\end{frame}
+
+% ---------- TRANSITION 3 ----------
+\transitionslide{And the knowledge commons hollows out}{The training data degrades when its contributors leave.}
+
+% ============================================================
+%  SECTION C \textemdash{} BURTCH (STACK OVERFLOW), LYU (WIKIPEDIA)
+% ============================================================
+
+% ---------- BURTCH: TRAFFIC + REDDIT CONTROL ----------
+\begin{frame}{Stack Overflow lost $\sim$1M visitors per day; Reddit's developer subs lost zero}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{Stack Overflow} & \textbf{Reddit dev subs} \\
+\midrule
+Daily traffic (SCUL, Fig.\ 1) & \alert{$-12\%$} ($\sim$1M/day) & \textcolor{Teal}{\textbf{null}} \\
+Question volume (DiD, Fig.\ 2) & \alert{$-10$ to $-15$/wk} & \textcolor{Teal}{\textbf{null}} \\
+Hardest-hit topics (SO) & Python, JS, ReactJS, Pandas & \textcolor{Teal}{n/a} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Social fabric moderates.} LLMs substitute for pure information; communities with bonds (Reddit) absorb the shock, communities without them (Stack Overflow) bleed.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Burtch, Lee \& Chen (2024), Figs.\ 1\textendash 4; SimilarWeb daily, Sept 2022\textendash Mar 2023.}
+\end{flushright}
+\end{frame}
+
+% ---------- BURTCH: NEWER USERS EXIT, COMPLEXITY RISES ----------
+\begin{frame}{Newer users leave first; the questions that remain are harder}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.6cm}p{4.4cm}@{}}
+\toprule
+\textbf{Compositional shift, week 15 post-ChatGPT} & \textbf{Magnitude} \\
+\midrule
+Avg.\ posting-user account tenure & \alert{$+100$ to $+200$ days} \\
+Avg.\ long-word frequency in questions & \alert{$+0.3$ to $+0.5$ units} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+\textbf{The juniors who left} were learning by asking. They lose mentorship and peer feedback \textemdash{} and they are precisely the cohort least able to verify a hallucinated LLM answer.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Burtch, Lee \& Chen (2024), Figs.\ 5\textendash 6; replicated via Athey et al.\ (2021) matrix completion in Fig.\ S2.}
+\end{flushright}
+\end{frame}
+
+% ---------- LYU: WIKIPEDIA ----------
+\begin{frame}{Wikipedia articles substitutable by GPT lose 29{,}013 views \textemdash{} and the edits drop too}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{DiD coefficient} & \textbf{Sig.} \\
+\midrule
+Pageviews / article-month & \alert{$-29{,}013$} (SE 6{,}904) & p $<$ 0.01 \\
+Edits / article-month & \alert{$-6.88$} (SE 3.72) & p $<$ 0.10 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Treatment = above-median cosine similarity to GPT-3.5 output. \(N\!=\!2{,}206\) articles, 24-month event window. The view drop is robust; the edit drop is suggestive but only marginally so.\\[0.1cm]
+\textbf{The same loop as Stack Overflow.} Fewer readers $\Rightarrow$ fewer editors $\Rightarrow$ weaker training corpus.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Lyu et al.\ (2025), \emph{WWW Companion '25}, Table~1; Acemoglu among co-authors.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{Devil's advocate: aren't these all just the J-curve before the J turns up?}
+\begin{block}{The strongest objection}
+Brynjolfsson, Rock \& Syverson (2021): firms in the trough of a productivity J-curve sink complementary investments now that pay off later. Humlum (2025, p.\ 21) flags this; his most common new task is ``AI integration'' itself.
+\end{block}
+\textbf{Reply.} J-curve explains the zero on incumbent wages \textemdash{} not:
+\begin{itemize}
+\item Liu (2025): entry postings declined three years running ($-6.4, -13.5, -18.2\%$). A J-curve trough does not deepen monotonically.
+\item Burtch (2024): contributor exit is \emph{compositional}; newer users leave. That selection cannot be reversed by waiting.
+\item Lyu (2025): the commons that trains the models is meanwhile shrinking.
+\end{itemize}
+J-curve is incumbent-side optimism. The cost falls on entrants and on commons.
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Stocks are stable. Flows are bleeding. The signal hides in the latter.}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.0cm}>{\RaggedRight\arraybackslash}p{3.4cm}>{\RaggedRight\arraybackslash}p{5.0cm}@{}}
+\toprule
+\textbf{Variable type} & \textbf{Signal} & \textbf{Empirical anchor} \\
+\midrule
+Incumbent stock & \textcolor{Teal}{precise zero} & Humlum: CI $<$ 1\% on wages \\
+Entry flow & \alert{$-19\%$ Y3 entry} & Liu: $-6.4 \to -18.2\%$ over 3 yrs \\
+Knowledge inflow & \alert{$-12\%$ traffic} & Burtch: SCUL on Stack Overflow \\
+Knowledge upkeep & \alert{$-29$K views} & Lyu: DiD on Wikipedia \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+The economic measurements that would call this an ``effect'' \textemdash{} earnings, hours, employment of incumbents \textemdash{} are exactly the variables that miss it. Look at flows.
+\end{frame}
+
+% ---------- CLOSING ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{The aggregates are clean.}}\\[0.6cm]
+{\Large\textcolor{LightGray}{The pipeline and the commons are not.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
