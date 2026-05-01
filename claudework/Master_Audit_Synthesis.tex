@@ -1,0 +1,1610 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{adjustbox}
+
+% --- Color Palette: Warm Professional ---
+\definecolor{DeepNavy}{HTML}{2E4057}
+\definecolor{Teal}{HTML}{048A81}
+\definecolor{WarmOrange}{HTML}{E85D04}
+\definecolor{SoftPurple}{HTML}{9D4EDD}
+\definecolor{WarmGray}{HTML}{6C757D}
+\definecolor{LightGray}{HTML}{E9ECEF}
+\definecolor{Cream}{HTML}{FBF8F1}
+\definecolor{DeepRed}{HTML}{D62828}
+\definecolor{Gold}{HTML}{D4A03A}
+\definecolor{SoftWhite}{HTML}{FAFAFA}
+
+% Beamer colors
+\setbeamercolor{normal text}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{structure}{fg=DeepNavy}
+\setbeamercolor{alerted text}{fg=DeepRed}
+\setbeamercolor{example text}{fg=Teal}
+\setbeamercolor{frametitle}{fg=DeepNavy, bg=SoftWhite}
+\setbeamercolor{title}{fg=DeepNavy}
+\setbeamercolor{subtitle}{fg=WarmGray}
+\setbeamercolor{block title}{bg=DeepNavy, fg=SoftWhite}
+\setbeamercolor{block body}{bg=LightGray, fg=DeepNavy}
+\setbeamercolor{itemize item}{fg=WarmOrange}
+\setbeamercolor{itemize subitem}{fg=Gold}
+\setbeamercolor{section in toc}{fg=DeepNavy}
+\setbeamercolor{subsection in toc}{fg=WarmGray}
+
+% Fonts
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+
+% Strip chrome on slides; the navigation lives in the PDF bookmark sidebar.
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% Minimal footline
+\setbeamertemplate{footline}{%
+    \hfill
+    \begin{beamercolorbox}[wd=3cm,ht=2.5ex,dp=1ex,right,rightskip=0.6cm]{page number}
+        \usebeamercolor[fg]{WarmGray}\scriptsize\insertframenumber
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+}
+
+% Bullets
+\setbeamertemplate{itemize item}{\footnotesize\raisebox{0.3ex}{\tikz\fill[WarmOrange] (0,0) circle (0.45ex);}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raisebox{0.3ex}{\tikz\fill[Gold] (0,0) circle (0.35ex);}}
+
+% Suppress beamer's cosmetic underfull \hbox warnings on flushright/RaggedRight lines.
+% Overfull warnings remain enforced.
+\hbadness=10000
+
+% Hyperref / bookmark configuration: clickable sidebar on the PDF.
+\hypersetup{
+  bookmarks=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  bookmarksnumbered=true,
+  pdftitle={GenAI's Four Crises -- Master Audit Synthesis},
+  pdfauthor={Audit synthesis},
+  pdfsubject={Two-tier synthesis of 23 papers across trust, displacement, consent, and growth},
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+% Custom commands
+\newcommand{\transitionslide}[2]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]\vfill\begin{center}
+        {\huge\bfseries\textcolor{Gold}{#1}}\\[0.6cm]
+        {\large\textcolor{LightGray}{#2}}
+    \end{center}\vfill\end{frame}}
+}
+
+\newcommand{\sectiondivider}[3]{%
+    {\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+    \begin{frame}[plain]
+    \vfill
+    \begin{center}
+        {\large\textcolor{Gold}{#1}}\\[0.4cm]
+        {\Huge\bfseries\textcolor{SoftWhite}{#2}}\\[0.4cm]
+        {\large\textcolor{LightGray}{#3}}
+    \end{center}
+    \vfill
+    \end{frame}}
+}
+
+\title{\textbf{GenAI's Four Crises}}
+\subtitle{A Two-Tier Master Synthesis of 23 Audited Papers}
+\author{Audit synthesis -- HEC Paris}
+\date{}
+
+\begin{document}
+
+% ============================================================
+%  TITLE
+% ============================================================
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\titlepage
+\vspace{-0.6cm}
+\begin{center}
+\footnotesize\textcolor{WarmGray}{%
+Tier 1: Executive Overview \quad\textbar\quad Tier 2: Five Deep Dives\\[0.15cm]
+Trust / UI \quad\textbullet\quad Economic Displacement \quad\textbullet\quad Data Consent \quad\textbullet\quad Macro-Productivity}
+\end{center}
+\end{frame}}
+
+% ============================================================
+%  TIER 1 -- EXECUTIVE OVERVIEW
+% ============================================================
+
+\section*{Tier~1: Executive Overview}
+\addcontentsline{toc}{section}{Tier 1: Executive Overview}
+
+% ---------- TIER 1 OPENER ----------
+\sectiondivider{Tier 1}{The Grand Synthesis}{Four streams. Twenty-three papers. One feedback loop.}
+
+% ---------- SLIDE 1: RESEARCH MAP ----------
+\begin{frame}{Twenty-three audited papers cluster into four crises}
+\begin{center}
+\renewcommand{\arraystretch}{0.95}
+\scriptsize
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{6.9cm}>{\RaggedRight\arraybackslash}p{3.6cm}@{}}
+\toprule
+\textbf{Stream} & \textbf{Papers (audited 2026-04)} & \textbf{Core question} \\
+\midrule
+\textbf{Trust / UI} & Spatharioti 25, Li \& Aral 25, Sharma 24, Wardle 25, Liu 23, Jazwinska 24, Jazwinska 25, Potthast 20 & Does the interface tell users what to verify? \\
+\textbf{Economic} & Eloundou 24, Noy 23, Demirci 25, Goldberg 26, Agrawal 25, Humlum 25, Burtch 24, Liu (Labor) 25, Lyu 25 & Where is GenAI taking work, and from whom? \\
+\textbf{Data consent} & Cooper 25, Yang 24, Fletcher 24, Kim 25, Longpre 25 & Will the training corpus survive the technology built on it? \\
+\textbf{Macro-prod.} & Acemoglu 25, Aggarwal (GEO) 24, Khosravi 26, Larsen 25, Liang 25 & What is the speed limit on GenAI's contribution to growth? \\
+\bottomrule
+\end{tabular}
+\end{center}
+{\footnotesize Each Tier~2 deep dive draws from one cell. The four cells share one finding: \alert{the constraints bind on each other}.}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Audit log (\texttt{claudework/AUDIT\_LOG.md}); five synthesis decks D1--D5.}
+\end{flushright}
+\end{frame}
+
+% ---------- SLIDE 2: CORE TENSION ----------
+\begin{frame}{Lab efficiency does not survive contact with the macro envelope}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\scriptsize
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.7cm}>{\RaggedRight\arraybackslash}p{4.8cm}>{\RaggedRight\arraybackslash}p{5.1cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{What the data says} & \textbf{Reconciliation} \\
+\midrule
+\textbf{Lab gain} \newline (Noy \& Zhang 23) & Time \alert{$-0.8$ SD} (TOT $-16.51$~min); grade \textcolor{Teal}{\textbf{$+0.4$ SD}}; 58/173 submitted unedited & Drafting halves; editing doubles. Substitution at the draft step, not ideation. \\
+\midrule
+\textbf{Macro envelope} \newline (Acemoglu 25) & 4.6\% of GDP $\times$ $\bar\pi=14.4\%$ $\Rightarrow$ \alert{$d\ln$TFP$=0.66\%$}, \alert{10-yr GDP $\leq 1.56\%$} & Goldman 7\%, McKinsey 1.5--3.4 pp/yr \alert{cannot be reconciled} with task-level estimates inside Hulten. \\
+\midrule
+\textbf{Where they meet} \newline (Demirci 25; Goldberg 26) & Writing freelance posts \alert{$-21\%$}; non-GenAI artists \alert{$-29\%$} on Adobe Stock; surviving budgets \emph{up} & Narrow, sharp dislocations \emph{exactly as Hulten predicts} when $4.6\%$ of GDP is exposed at 14\%. \\
+\bottomrule
+\end{tabular}
+\end{center}
+{\footnotesize \textbf{Both numbers are right.} 80\% of workers exposed (Eloundou 24) and 1.56\% GDP (Acemoglu 25) describe the \emph{same} economy: a wide-but-shallow shock concentrated where AI's curvature $\eta_{AI}\!\le\!1/q^2$ holds (Agrawal, Gans \& Goldfarb 25, Prop.~3).}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{See Tier~2 Deep Dive 4 (Productivity Gap) for the full chain.}
+\end{flushright}
+\end{frame}
+
+% ---------- SLIDE 3: SUSTAINABILITY CRISIS ----------
+\begin{frame}{Direct answers train on a web that is closing}
+\begin{center}
+\renewcommand{\arraystretch}{0.9}
+\scriptsize
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{0.4cm}>{\RaggedRight\arraybackslash}p{2.9cm}>{\RaggedRight\arraybackslash}p{9.3cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Mechanism} & \textbf{Empirical anchor (paper, number)} \\
+\midrule
+1 & Direct-answer interface & Potthast 20: four risks -- misattribution, source erosion, market distortion, loop pollution \\
+2 & Citation integrity falls & Liu 23: precision $74.5\%$, recall $51.5\%$; \alert{$r=-0.96$} fluency $\times$ citation precision \\
+3 & Misattribution scales & Jazwinska 24/25: \alert{60\%} wrong across 8 chatbots; Grok 3 \alert{94\%}; premium tiers more confidently wrong \\
+4 & Pageviews collapse & Khosravi 26: Wikipedia \alert{$-15\%$}; \$35.7M--\$102.1M annual donations at risk \\
+5 & Premium supply withdraws & Fletcher 24: \alert{48\%} of top news blocked OpenAI by end-2023; legacy print 57\%; none reversed \\
+6 & Consent withdrawn & Longpre 25: \alert{25.9\%} of OpenAI HEAD\_C4 tokens restricted via robots.txt in 12 mo (vs.\ $1.0\%$ Googlebot) \\
+7 & Joint policy required & Yang \& Zhang 24, Prop.~10--12: in scarce data, \alert{generous fair use HARMS} AI development \\
+\bottomrule
+\end{tabular}
+\end{center}
+{\scriptsize \textbf{The loop closes on itself.} Each turn cheapens the next -- until the legal backstop (Cooper 25: \$1.5B Bartz v.\ Anthropic) and the consent backstop both bind.}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{See Tier~2 Deep Dives 2 (Direct Answer Dilemma) and 3 (Closing Web).}
+\end{flushright}
+\end{frame}
+
+% ---------- SLIDE 4: WHAT TIER 2 ADDS ----------
+\begin{frame}{The four crises are joint constraints, not independent levers}
+\begin{center}
+\renewcommand{\arraystretch}{0.95}
+\scriptsize
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.8cm}>{\RaggedRight\arraybackslash}p{5.2cm}>{\RaggedRight\arraybackslash}p{4.6cm}@{}}
+\toprule
+\textbf{Deep dive} & \textbf{One-line claim} & \textbf{Where it binds the others} \\
+\midrule
+1.\ Veneer of Search & Interface earned the trust; the model did not (Spatharioti 25: 47\% accuracy at 4.41/5). & If users do not verify, displaced labor (DD 4) cannot route around errors. \\
+2.\ Direct Answer Dilemma & Direct answers are an externality on the web that produced them. & Erodes the corpus that DD 3 measures closing. \\
+3.\ Closing Web & Running out of \alert{consent}, not data (Longpre 25: 25.9\%). & Fixes Yang \& Zhang's data-scarce regime as the binding policy frame. \\
+4.\ Productivity Gap & The macro is small (1.56\%); dislocations are not ($-21\%$ writing). & Caps the upside that justifies the consent and trust costs above. \\
+5.\ Joint Copyright & $f$ and $\phi$ are economically linked (Yang 24, Prop.~12). & The policy lever that lets DD 3 and DD 4 be solved together. \\
+\bottomrule
+\end{tabular}
+\end{center}
+{\footnotesize \textbf{The synthesis claim:} no single deep dive's reform works alone. Restoring user judgement (DD 1), repricing direct answers (DD 2), reopening the data commons (DD 3), and lifting the macro ceiling (DD 4) are tied through one policy surface (DD 5).}
+\end{frame}
+
+% ============================================================
+%  TIER 2 -- DETAILED APPENDICES
+% ============================================================
+
+\sectiondivider{Tier 2}{Five Deep Dives}{The full audit, one stream at a time.}
+
+% ============================================================
+%  DEEP DIVE 1: VENEER OF SEARCH
+% ============================================================
+
+\section{Deep Dive 1: The Veneer of Search}
+
+% Section opener (replaces original title page)
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{Deep Dive 1}}\\[0.4cm]
+{\Huge\bfseries\textcolor{DeepNavy}{The Veneer of Search}}\\[0.3cm]
+{\large\textcolor{WarmGray}{How AI Interfaces Earn Trust They Haven't Earned}}\\[1.0cm]
+\footnotesize\textcolor{WarmGray}{%
+Spatharioti et al.\ (2025), \emph{CHI '25} \quad\textbar\quad
+Li \& Aral (2025), \emph{arXiv:2504.06435}\\
+Sharma, Liao \& Xiao (2024), \emph{CHI '24} \quad\textbar\quad
+Wardle, Urbani \& Wang (2025), \emph{JMIR} 27, e79961}
+\end{center}
+\vfill
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{1.6 min \quad 47\% \quad 4.41/5}}\\[0.6cm]
+{\Large\textcolor{DeepNavy}{AI search cut task time in half.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{It \alert{halved accuracy} on a hard task.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{Users rated the experience \emph{best of all}.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1, $N\!=\!90$ MTurk; vs.\ traditional search 3.4 min, 93\% accuracy, 3.10/5.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{AI search wears four veneers \textemdash{} each builds unearned trust}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.0cm}>{\RaggedRight\arraybackslash}p{3.6cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{2.0cm}@{}}
+\toprule
+\textbf{Veneer} & \textbf{What it looks like} & \textbf{What it does} & \textbf{Source} \\
+\midrule
+\textbf{Speed} & ``AI search is fast'' & Hides errors users cannot catch & Spatharioti \\
+\textbf{References} & ``AI cites its sources'' & Builds trust even when fake & Li \& Aral \\
+\textbf{Search} & ``User issues queries'' & Most queries are confirmatory & Sharma \\
+\textbf{Utility} & ``AI is useful'' & Overrides users' own distrust & Wardle \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\subsection{Veneer 1: Speed that hides errors}
+
+\transitionslide{Veneer 1: speed that hides errors}{Faster searches, worse decisions, higher satisfaction.}
+
+% ---------- SPATHARIOTI: TIME + ACCURACY ----------
+\begin{frame}{LLM search halved task time \textemdash{} and halved accuracy on the hard task}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{3.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{Traditional search} & \textbf{LLM-based search} \\
+\midrule
+Median task duration & 3.4 min & \alert{1.6 min} \,($p\!<\!.001$) \\
+Easy-task accuracy & 92.3\% & 95.3\% \,(NS) \\
+\textbf{Hard-task accuracy} & \textbf{93\%} & \alert{\textbf{47\%}} \,($p\!<\!.001$) \\
+Number of queries & 2.5 & 1.9 \,($p\!=\!.02$) \\
+Query complexity (1\textendash 5) & 1.8 & 3.4 \,($p\!<\!.001$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+On the hard task, \alert{30/51} LLM users issued only \emph{one} query; none re-queried after a wrong answer.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1, Figs.~2\textendash 3; 4Runner adversarial item.}
+\end{flushright}
+\end{frame}
+
+% ---------- SPATHARIOTI: PREFERENCE BLINDNESS ----------
+\begin{frame}{Users prefer LLM search 4.41 vs.\ 3.10 \textemdash{} and cannot detect its errors}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.6cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Self-reported measure} & \textbf{Traditional} & \textbf{LLM} \\
+\midrule
+Overall search experience (1\textendash 5) & 3.10 & \textcolor{Teal}{\textbf{4.41}} \,($p\!<\!.001$) \\
+Perceived reliability (1\textendash 5) & $\sim$4 & $\sim$4 \,(NS, $p\!=\!.91$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\begin{block}{The interface fix exists \textemdash{} but only if it is added}
+Confidence highlighting (red on low-probability tokens, Exp.~2) more than \alert{doubled hard-task accuracy} from 26\% to 58\% \,($p\!<\!.01$). The fix lives in the UI, not the model.
+\end{block}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Spatharioti et al.\ (2025), Exp.\ 1 \& 2, Figs.~4, 6.}
+\end{flushright}
+\end{frame}
+
+\subsection{Veneer 2: References that fool whether real or fake}
+
+\transitionslide{Veneer 2: trust from interface, not content}{The references work \emph{whether or not they are real}.}
+
+% ---------- LI \& ARAL: REFERENCE EFFECT ----------
+\begin{frame}{Reference links increase trust \textemdash{} and hallucinated ones work just as well}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{6.4cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Treatment} & \textbf{$\beta$ on trust} & \textbf{$\beta$ on share} \\
+\midrule
+References (vs.\ plain GenAI) & \textcolor{Teal}{\textbf{+0.091}}\,$^{***}$ & \textcolor{Teal}{\textbf{+0.121}}\,$^{***}$ \\
+Hallucinated vs.\ valid references & $-0.021$ \,(NS) & $-0.008$ \,(NS) \\
+Uncertainty highlighting & \alert{$-0.157$}\,$^{***}$ & \alert{$-0.179$}\,$^{***}$ \\
+Negative social feedback & \alert{$-0.213$}\,$^{***}$ & \alert{$-0.286$}\,$^{***}$ \\
+GenAI label vs.\ traditional (same content) & $-0.043$\,$^{*}$ & \alert{$-0.141$}\,$^{***}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The mere \emph{presence} of citations creates trust, regardless of whether they resolve. Most vulnerable: lower education, less tech experience, infrequent GenAI users.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Li \& Aral (2025), pre-registered RCT, $N\!=\!4{,}927$ Prolific, Figs.~3\textendash 4.}
+\end{flushright}
+\end{frame}
+
+\subsection{Veneer 3: Confirmatory querying disguised as search}
+
+\transitionslide{Veneer 3: confirmatory querying disguised as search}{When the interface answers, the user stops looking.}
+
+% ---------- SHARMA: 10X CONFIRMATORY ----------
+\begin{frame}{Conversational search induces 10$\times$ more confirmatory querying than web search}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.6cm}p{3.0cm}@{}}
+\toprule
+\textbf{Measure} & \textbf{WebSearch} & \textbf{ConvSearch(Ref)} \\
+\midrule
+Confirmatory query rate & 1.46\% & \alert{15.0\textendash 16.2\%} \\
+Confirmatory agreement (post-task) & 0.80 & \alert{1.79\textendash 1.89} \\
+Confirmatory trust & 0.35 & 0.79\textendash 0.89 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+ANCOVA $F(2,100)\!=\!4.71$, $p\!=\!.01$ on querying; $F\!=\!6.61$, $p\!=\!.002$ on agreement. Cohen's $D$ up to \alert{0.78}.\\
+Inline references did not change this: ConvSearchRef behaved like ConvSearch.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Sharma, Liao \& Xiao (2024), Study~1, $N\!=\!115$ Prolific, Table~1.}
+\end{flushright}
+\end{frame}
+
+% ---------- SHARMA: CONSONANT/DISSONANT ASYMMETRY ----------
+\begin{frame}{Consonant LLMs polarize \textemdash{} but dissonant LLMs do \alert{not} correct it}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.8cm}p{2.4cm}p{2.4cm}p{2.4cm}@{}}
+\toprule
+\textbf{Measure} & \textbf{Consonant} & \textbf{Neutral} & \textbf{Dissonant} \\
+\midrule
+Confirmatory query rate & \alert{42.9\%} & 15.6\% & 12.3\% \\
+Confirmatory arguments in essays & \alert{51.7\%} & 34.8\% & 15.6\% \\
+Confirmatory agreement & \alert{2.44} & 1.84 & 1.51 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\textbf{The asymmetry is the result.} Consonant LLMs amplify polarization with Cohen's $D$ up to \alert{1.19}; dissonant LLMs fail to depolarize on every measure (all $p\!>\!.05$ vs.\ Neutral). Designing ``opposing-view'' tools will not undo selective exposure.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Sharma, Liao \& Xiao (2024), Study~2, $N\!=\!223$, Table~3.}
+\end{flushright}
+\end{frame}
+
+\subsection{Veneer 4: Utility that overrides distrust}
+
+\transitionslide{Veneer 4: utility that overrides distrust}{Users adopt what they doubt \textemdash{} if it is convenient.}
+
+% ---------- WARDLE: UTILITY OVER TRUST ----------
+\begin{frame}{56\% of users adopt AI for health information \emph{despite} distrusting it}
+\vspace{0.1cm}
+\begin{itemize}
+\item \textbf{15/27 (56\%)} used AI-generated health info despite expressing skepticism, when it ``helped power further investigation.''
+\item \textbf{14/27 (52\%)} already integrate ChatGPT into their health-search routines; \textbf{23/27 (85\%)} reported favorably on its formatting or efficiency.
+\item AI is used as a \alert{``starting point''}: keyword generation, summarization, then verified on Google or with a doctor \textemdash{} \emph{utility}, not credibility, drives integration.
+\item Only \alert{5/27 (19\%)} understood that training data shapes LLM outputs.
+\item \textbf{2/3} expressed concern that ChatGPT does not cite sources \textemdash{} yet still used it.
+\end{itemize}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Wardle, Urbani \& Wang (2025), think-aloud protocol, $N\!=\!27$, JMIR 27:e79961.}
+\end{flushright}
+\end{frame}
+
+\subsection{Devil's advocate \& synthesis}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{A skeptic would say these are lab effects, not real-world behavior}
+\vspace{0.1cm}
+\textbf{The objection.} Spatharioti uses MTurk ($N\!=\!90$, no demographics); Sharma uses Prolific ($N\!=\!115$\textendash 223, closed-world docs); Wardle is qualitative, $N\!=\!27$ from four East Coast cities. Only Li \& Aral has scale, and even that is a controlled vignette.\\[0.4cm]
+\textbf{The response.}
+\begin{itemize}
+\item \alert{The effect sizes are large.} Cohen's $D\!>\!1$ in Sharma; a 46-point accuracy gap in Spatharioti; $\beta$'s significant at $p\!<\!.001$ in Li \& Aral. Small samples find them anyway.
+\item \alert{Four very different methods converge.} Between-subjects RCT, factorial RCT, large pre-registered RCT, qualitative think-aloud \textemdash{} all four point to interface-driven effects exceeding content-driven ones.
+\item \alert{The lab is the world.} Li \& Aral's exposure audit: \textbf{42\%} of US Google searches now return AI Overviews; \textbf{56\%} for general-knowledge queries. The vignettes describe what most users now see.
+\end{itemize}
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Restoring user judgment requires interface-level, not model-level, fixes}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.2cm}@{}}
+\toprule
+\textbf{Veneer} & \textbf{Reform} & \textbf{Concrete evidence} \\
+\midrule
+Speed & Confidence highlighting on uncertain tokens & Spatharioti Exp.~2: 26\%$\to$58\% accuracy \\
+References & Verified-source badges; degrade UI on broken links & Li \& Aral: refs trusted regardless of validity \\
+Search & Default to neutral retrieval; flag opinion drift & Sharma: dissonant LLM does \emph{not} fix it \\
+Utility & AI literacy on training data; source labels & Wardle: only 19\% understood data shapes outputs \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Each fix is interface-side; none requires changing the underlying model.}
+\end{flushright}
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{The interface earned the trust.}}\\[0.8cm]
+{\huge\bfseries\textcolor{SoftWhite}{The model \alert{did not}.}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ============================================================
+%  DEEP DIVE 2: DIRECT ANSWER DILEMMA
+% ============================================================
+
+\section{Deep Dive 2: The Direct Answer Dilemma}
+
+% Section opener
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{Deep Dive 2}}\\[0.4cm]
+{\Huge\bfseries\textcolor{DeepNavy}{The Direct Answer Dilemma}}\\[0.3cm]
+{\large\textcolor{WarmGray}{How AI Search Closes the Attribution Loop \textemdash{} and Who Pays for It}}\\[1.0cm]
+\footnotesize\textcolor{WarmGray}{%
+Potthast et al.\ (2020), \emph{SIGIR Forum} \quad\textbar\quad
+Liu, Zhang \& Liang (2023), \emph{arXiv:2304.09848}\\
+Jazwinska \& Chandrasekar (2024, 2025), \emph{Tow Center / CJR} \quad\textbar\quad
+Aggarwal et al.\ (2024), \emph{KDD '24}\\
+Khosravi et al.\ (2026), \emph{arXiv preprint} \quad\textbar\quad
+Larsen et al.\ (2025) \quad\textbar\quad
+Liang et al.\ (2025), \emph{Patterns}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{60\%}}\\[0.4cm]
+{\large\textcolor{DeepNavy}{of citation queries answered \emph{wrong} by eight AI search engines.}}\\[0.2cm]
+{\large\textcolor{DeepNavy}{Grok 3: 94\% wrong. Most wrong answers came with no hedging.}}\\[1.0cm]
+{\Large\textcolor{WarmGray}{The interface earned the user's trust. The citations did not.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2025), \emph{Tow Center / CJR}; 1{,}600 queries across 8 chatbots.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Potthast (2020) named four risks of the direct-answer interface \textemdash{} all four now have data}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{3.8cm}@{}}
+\toprule
+\textbf{Potthast risk (2020)} & \textbf{Mechanism} & \textbf{Empirical confirmation} \\
+\midrule
+\textbf{Misattribution} & Answer drops the source & \alert{Liu 23; Jazwinska 24/25} \\
+\textbf{Source erosion} & Click never happens & \alert{Khosravi 2026} \\
+\textbf{Market distortion} & Ad auction reshapes & \alert{Larsen 2025} \\
+\textbf{Loop pollution} & Synthetic text re-enters web & \alert{Aggarwal 24; Liang 25} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Potthast, Hagen \& Stein (2020), \emph{SIGIR Forum} 54(1):14.}
+\end{flushright}
+\end{frame}
+
+\subsection{Citation integrity}
+
+\transitionslide{Citation is broken at the source}{Direct-answer interfaces grade their own homework.}
+
+% ---------- LIU 2023 ----------
+\begin{frame}{The better the answer reads, the worse it cites \textemdash{} r = $-0.96$}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{3.4cm}p{3.4cm}@{}}
+\toprule
+\textbf{Engine} & \textbf{Citation recall} & \textbf{Citation precision} \\
+\midrule
+Bing Chat & 58.7\% & 89.5\% \\
+NeevaAI & 67.6\% & 72.0\% \\
+perplexity.ai & 68.7\% & 72.7\% \\
+YouChat & 11.1\% & 63.6\% \\
+\midrule
+\textbf{Mean (4 engines)} & \alert{\textbf{51.5\%}} & \alert{\textbf{74.5\%}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Across 1{,}450 statements:} Pearson \(r = -0.96\) between citation precision and the perceived fluency/utility of the answer. Better-sounding answers cite worse.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liu, Zhang \& Liang (2023), Tables~3\textendash 4; human eval over four generative search engines, May 2023.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAZWINSKA 2024 ----------
+\begin{frame}{ChatGPT Search misattributed 153 of 200 publisher quotes \textemdash{} and declined only 7 times}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{2.8cm}p{3.4cm}@{}}
+\toprule
+\textbf{Response category} & \textbf{Count / 200} & \textbf{Share} \\
+\midrule
+Correct (publisher + date + URL) & 47 & 23.5\% \\
+Partially correct & 57 & 28.5\% \\
+\textbf{Wrong} & \alert{89} & \alert{44.5\%} \\
+Declined / unsure & 7 & 3.5\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+Even publishers \emph{with} OpenAI licensing deals were misattributed. NYT (in active lawsuit, blocked) was cited via plagiarized copies.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2024), \emph{Tow Center / CJR}, Nov.\ 2024; 200 quotes, 20 publishers.}
+\end{flushright}
+\end{frame}
+
+% ---------- JAZWINSKA 2025 ----------
+\begin{frame}{Across 8 chatbots, premium tiers are \emph{more} confidently wrong}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.8cm}p{4.0cm}@{}}
+\toprule
+\textbf{Engine} & \textbf{Inaccuracy} & \textbf{Behavior} \\
+\midrule
+Perplexity (free) & \textcolor{Teal}{\textbf{37\%}} & best of eight \\
+ChatGPT Search & 67\% & hedged 15/200 \\
+Perplexity Pro (paid) & higher & decline rate falls \\
+Gemini & high & fabricated URLs frequent \\
+DeepSeek & high & misattributed 115/200 \\
+\textbf{Grok 3 (paid)} & \alert{\textbf{94\%}} & 154/200 broken URLs \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Paid tiers answer \emph{more} prompts confidently \textemdash{} so they make \emph{more} confident errors. Robots.txt routinely violated.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Jazwinska \& Chandrasekar (2025), \emph{CJR}, Mar.\ 2025; 1{,}600 queries (20 publishers $\times$ 10 quotes $\times$ 8 chatbots).}
+\end{flushright}
+\end{frame}
+
+\subsection{Economic spillover}
+
+\transitionslide{The economic price falls on the source}{Direct answers are paid for in someone else's traffic.}
+
+% ---------- KHOSRAVI 2026 ----------
+\begin{frame}{AI summaries cut Wikipedia pageviews $\sim$15\%, costing \$35.7M\textendash \$102.1M per year}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Outcome} & \textbf{Estimate} & \textbf{Source} \\
+\midrule
+Pageview decline (post-AI summaries) & \alert{$-15\%$} & DiD, 2024\textendash 25 \\
+Annual donation revenue at risk & \$35.7M\textendash \$102.1M & extrapolation \\
+Editor-recruitment funnel & weaker & traffic-volunteer link \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{The first feedback loop:} fewer readers $\rightarrow$ fewer donations and editors $\rightarrow$ a thinner Wikipedia $\rightarrow$ a thinner training corpus.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Khosravi et al.\ (2026); pageview DiD around AI Overviews / Search GPT rollouts.}
+\end{flushright}
+\end{frame}
+
+% ---------- LARSEN 2025 ----------
+\begin{frame}{Sponsored-search auctions splinter: short-query CPC $+1.5\%$, long-query CPC $-2.5\%$}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.0cm}p{3.0cm}p{3.0cm}@{}}
+\toprule
+\textbf{Query length} & \textbf{$\Delta$ CPC (BERT)} & \textbf{Mechanism} \\
+\midrule
+Short (1\textendash 2 tokens) & \alert{$+1.5\%$} & better intent match $\rightarrow$ tighter rivalry \\
+Long-tail (5+ tokens) & \alert{$-2.5\%$} & query absorbed by AI answer \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{The second feedback loop:} the highest-intent traffic that publishers monetized via long-tail SEO is exactly what AI answers consume \textemdash{} so its auction price falls.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Larsen et al.\ (2025); 11{,}949 queries $\times$ 24 months SEMRush panel; BERT rollout DiD.}
+\end{flushright}
+\end{frame}
+
+\subsection{Adaptation \& loop pollution}
+
+\transitionslide{Creators adapt \textemdash{} and the well gets polluted}{Optimization moves on. The optimization target is now an AI.}
+
+% ---------- AGGARWAL 2024 ----------
+\begin{frame}{Adding a single quotation lifts AI-engine visibility by 41\%}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.8cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{GEO tactic} & \textbf{$\Delta$ visibility} & \textbf{Cost to publisher} \\
+\midrule
+\textbf{Quotation Addition} & \alert{$+41\%$} & low (one edit) \\
+Statistics Addition & $+32\%$ & low \\
+Authoritative tone & $+30\%$ & stylistic only \\
+Citing Sources & $+27\%$ & low \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Generative Engine Optimization} (GEO) is now a discipline. The new ranking signal rewards \emph{quotability}, not authority \textemdash{} so creators feed the engine what it likes.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Aggarwal et al.\ (2024), \emph{KDD '24}; benchmark of 9 GEO tactics on 10K queries.}
+\end{flushright}
+\end{frame}
+
+% ---------- LIANG 2025 ----------
+\begin{frame}{By late 2024, $\sim$24\% of corporate press releases and $\sim$18\% of CFPB complaints are LLM-written}
+\vspace{0.1cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Corpus} & \textbf{LLM share} & \textbf{Sample (N)} \\
+\midrule
+Corporate press releases & \alert{$\sim$24\%} & 537{,}413 \\
+Consumer complaints (CFPB) & $\sim$18\% & 687{,}241 \\
+UN press releases & $\sim$14\% & 15{,}919 \\
+Small-firm job postings & $\sim$10\textendash 15\% & 1.44M \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.1cm}
+Distributional MLE; prediction error \(<3.3\%\); \emph{lower bound} (heavy edits invisible). The corpus on which the next models train is increasingly authored \emph{by} models.
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Liang et al.\ (2025), \emph{Patterns}; four corpora, Jan 2019\textendash Sep 2024.}
+\end{flushright}
+\end{frame}
+
+\subsection{Devil's advocate \& synthesis}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{Devil's advocate: aren't most queries the kind where citations don't matter?}
+\begin{block}{The strongest objection}
+For ``what time is the show,'' ``capital of Peru,'' ``recipe for risotto,'' AI answers users more cheaply than ten blue links \textemdash{} and a wrong citation costs nothing.
+\end{block}
+\textbf{Reply.} Three problems with the carve-out:
+\begin{itemize}
+\item Liu (2023): \(r = -0.96\) between fluency and citation precision \textemdash{} users have \emph{no signal} that flips them from ``trust'' to ``verify.''
+\item Jazwinska (2025): premium-tier engines decline less, so confident wrongness rises with willingness to pay.
+\item Khosravi (2026) + Larsen (2025): even ``trivial'' queries strip the long-tail traffic that funds the verifiable corpus.
+\end{itemize}
+The cheap query subsidises the expensive one. Sever the cross-subsidy, both fail.
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Potthast's prophecy is now a self-reinforcing loop with five turns of the crank}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{0.8cm}>{\RaggedRight\arraybackslash}p{3.8cm}>{\RaggedRight\arraybackslash}p{7.0cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Turn} & \textbf{Empirical anchor} \\
+\midrule
+1 & Citations decay & Liu 2023: precision\,74.5\%, recall\,51.5\%, $r\!=\!-0.96$ \\
+2 & Misattribution scales & Jazwinska 24/25: 60\%\textendash 94\% wrong (8 engines) \\
+3 & Page views collapse & Khosravi 2026: $-15\%$ Wikipedia traffic \\
+4 & Ad auctions reprice & Larsen 2025: $-2.5\%$ long-tail CPC \\
+5 & Synthetic content fills gap & Aggarwal 24 (GEO $+41\%$); Liang 25 ($\sim$24\% PR) \\
+\bottomrule
+\end{tabular}
+\end{center}
+The training corpus that produced the model is being eroded by the model. Each turn cheapens the next.
+\end{frame}
+
+% ---------- CLOSING ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{Direct answers are not free.}}\\[0.6cm]
+{\Large\textcolor{LightGray}{They are an externality on the web that produced them.}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ============================================================
+%  DEEP DIVE 3: CLOSING WEB
+% ============================================================
+
+\section{Deep Dive 3: The Closing Web}
+
+% Section opener
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{Deep Dive 3}}\\[0.4cm]
+{\Huge\bfseries\textcolor{DeepNavy}{The Closing Web}}\\[0.3cm]
+{\large\textcolor{WarmGray}{Consent, Copyright, and the Crisis in AI Training Data}}\\[1.0cm]
+\footnotesize\textcolor{WarmGray}{%
+Cooper et al.\ (2025), \emph{Review of Network Economics} \quad\textbar\quad
+Yang \& Zhang (2024), \emph{arXiv:2402.17801v2}\\
+Fletcher (2024), \emph{Reuters Institute Factsheet} \quad\textbar\quad
+Kim et al.\ (2025), \emph{IMC '25} \quad\textbar\quad
+Longpre et al.\ (2025), \emph{DPI / MIT}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{25.9\%}}\\[0.4cm]
+{\large\textcolor{DeepNavy}{of OpenAI's head-domain training tokens}}\\[0.2cm]
+{\large\textcolor{DeepNavy}{were withdrawn via robots.txt \textemdash{} in twelve months.}}\\[1.0cm]
+{\Large\textcolor{WarmGray}{The web is closing faster than any compute curve.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Longpre et al.\ (2025), Table~3 (HEAD\_C4); restriction rate, mid-2023 to April 2024.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{AI training rests on four pillars \textemdash{} all four are cracking}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.4cm}>{\RaggedRight\arraybackslash}p{4.6cm}>{\RaggedRight\arraybackslash}p{4.4cm}@{}}
+\toprule
+\textbf{Pillar} & \textbf{What it does} & \textbf{Status (this deck)} \\
+\midrule
+\textbf{Consent signal} & Tells crawlers what is permitted & \alert{Eroding} \,(Longpre 2025) \\
+\textbf{Voluntary compliance} & Bots honor the signal & \alert{Selective} \,(Kim 2025) \\
+\textbf{Premium supply} & Provides quality training input & \alert{Withdrawing} \,(Fletcher 2024) \\
+\textbf{Legal backstop} & Enforces when norms fail & \alert{Fragmenting} \,(Cooper; Yang) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\subsection{Pillar 1: Consent signal}
+
+% ---------- LONGPRE: SPEED ----------
+\begin{frame}{In one year, head-domain training tokens went from 3\% restricted to 33\%}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{3.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Corpus slice} & \textbf{Mid-2023} & \textbf{April 2024} \\
+\midrule
+C4 / RefinedWeb / Dolma (full) & $\sim$1\% & \alert{5\textendash 7\%} \\
+HEAD\_All (top 2K domains) & $<$3\% & \alert{20\textendash 33\%} \\
+SARIMA forecast, April 2025 & \textemdash{} & +2\textendash 4\% (full); +7\textendash 11\% (head) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\textbf{Terms of Service} now restrict \textbf{45\textendash 55\%} of all corpus tokens \textemdash{} a 26\textendash 53\% relative jump in one year.\\[0.3cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Longpre et al.\ (2025), Figs.~1\textendash 2; pp.~5\textendash 7. Audit of C4, RefinedWeb, Dolma.}
+\end{flushright}
+\end{frame}
+
+% ---------- LONGPRE: ASYMMETRY ----------
+\begin{frame}{The closing targets one crawler 26$\times$ more than another}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{4.0cm}@{}}
+\toprule
+\textbf{Crawler / organization} & \textbf{Head tokens restricted} \\
+\midrule
+\textbf{OpenAI} (GPTBot) & \alert{25.9\%} \\
+Anthropic (ClaudeBot) & 13.3\% \\
+Common Crawl (CCBot) & 13.3\% \\
+Google-Extended (Google AI) & 9.8\% \\
+Cohere & 4.9\% \\
+Meta (FacebookBot) & 4.1\% \\
+Internet Archive & 3.2\% \\
+\textbf{Google Search} (Googlebot) & \textcolor{Teal}{\textbf{1.0\%}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Longpre et al.\ (2025), Table~3 (HEAD\_C4). Restrictions are AI-specific, not anti-crawl.}
+\end{flushright}
+\end{frame}
+
+\subsection{Pillar 2: Voluntary compliance}
+
+\transitionslide{But the signal is unenforceable}{robots.txt is a polite request, not a wall.}
+
+% ---------- KIM: COMPLIANCE FALLS WITH STRICTNESS ----------
+\begin{frame}{Bot compliance \emph{halves} as robots.txt directives become stricter}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{4.0cm}@{}}
+\toprule
+\textbf{Directive} & \textbf{Weighted compliance} \\
+\midrule
+Crawl delay (30s) & 0.609 \\
+Endpoint access restriction & 0.310 \\
+\textbf{Disallow all} & \alert{\textbf{0.307}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{block}{The protocol fails on contact}
+The advisory directive (delay) is followed twice as often as the exclusionary one. Switching from ``be polite'' to ``stay out'' loses half the leverage.
+\end{block}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Kim et al.\ (2025), Table~5; 3.9M requests, 36 sites, 8 weeks.}
+\end{flushright}
+\end{frame}
+
+% ---------- KIM: STATED POLICY VS BEHAVIOR ----------
+\begin{frame}{Bots' stated policy is uncorrelated with their observed behavior}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}>{\RaggedRight\arraybackslash}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.6cm}@{}}
+\toprule
+\textbf{Bot} & \textbf{Claimed} & \textbf{Observed compliance} \\
+\midrule
+ClaudeBot, GPTBot, Amazonbot & respects & \textcolor{Teal}{\textbf{1.000}} (disallow-all) \\
+PerplexityBot & \alert{refuses} & 0.897 (endpoint) \\
+Applebot & respects & \alert{0.043} (disallow-all) \\
+Bytespider & refuses & 0.000 (endpoint) \\
+BrightEdge & respects & \alert{0.000} (disallow-all) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Selection effect:} legitimate frontier labs are most exposed to opt-outs; lower-reputation actors are not.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Kim et al.\ (2025), Table~6 \& Fig.~9.}
+\end{flushright}
+\end{frame}
+
+\subsection{Pillar 3: Premium supply}
+
+\transitionslide{Premium supply retreats first}{The most valuable content leaves before the average page does.}
+
+% ---------- FLETCHER: NEWS BLOCKING ----------
+\begin{frame}{By end of 2023, 48\% of top news sites blocked OpenAI \textemdash{} and none reversed}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{3.8cm}p{3.8cm}@{}}
+\toprule
+\textbf{Outlet type} & \textbf{Blocking OpenAI} & \textbf{Blocking Google AI} \\
+\midrule
+\textbf{Legacy print} & \alert{57\%} & 32\% \\
+Broadcast & 48\% & 19\% \\
+Digital-born & 31\% & 17\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{itemize}
+\item USA leads at \alert{79\%} OpenAI blocking; Spain, Mexico, Poland trail at 20\textendash 27\%.
+\item Across 150 outlets in 10 countries, \textbf{no site unblocked} either crawler in 2023.
+\item Higher-reach outlets block more \textemdash{} \emph{quality} retreats faster than quantity.
+\end{itemize}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Fletcher (2024), Figs.~1, 3, 4. $N=150$ Wayback-Machine longitudinal sample.}
+\end{flushright}
+\end{frame}
+
+% ---------- LONGPRE / FLETCHER: USAGE MISMATCH ----------
+\begin{frame}{The most-restricted corpus is the corpus AI users barely query}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{3.8cm}p{3.8cm}@{}}
+\toprule
+\textbf{Content category} & \textbf{HEAD\_C4 share} & \textbf{ChatGPT query share} \\
+\midrule
+News \& periodicals & \alert{$\sim$40\%} & \alert{$<$1\%} \\
+Creative composition & small & $\sim$28\% \\
+Sexual roleplay & $<$1\% & 12\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{block}{The double irony}
+News publishers are blocking a corpus AI rarely uses at inference; AI usage concentrates in domains for which little permitted training data exists.
+\end{block}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Longpre et al.\ (2025), Fig.~4. WildChat $N\!=\!1$M conversations.}
+\end{flushright}
+\end{frame}
+
+\subsection{Pillar 4: Legal backstop}
+
+\transitionslide{The legal backstop fragments}{Three jurisdictions, four rulings, no shared doctrine.}
+
+% ---------- COOPER: $1.5B + RULINGS ----------
+\begin{frame}{\$1.5B already paid for the input stage \textemdash{} and the doctrine is still unsettled}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.2cm}>{\RaggedRight\arraybackslash}p{9.2cm}@{}}
+\toprule
+\textbf{Bartz v.\ Anthropic} \emph{(Alsup)} & Initial book \alert{downloads infringing} $\rightarrow$ \textbf{\$1.5B} (largest in history); training itself ruled fair use. \\
+\midrule
+\textbf{Kadrey v.\ Meta} \emph{(Chhabria)} & Fair use \emph{only because} ``plaintiffs made the wrong arguments''; judge believes training is \alert{generally illegal}. \\
+\midrule
+\textbf{USCO} \emph{(2025b)} & Doubts fair use applies when outputs \alert{compete in markets} for training works. \\
+\midrule
+\textbf{LAION} \emph{(Hamburg)} & EU TDM Art.~4: \alert{ToS opt-outs} likely enforceable. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), pp.~165\textendash 166. Two-thirds of public training datasets carry wrong/missing licenses.}
+\end{flushright}
+\end{frame}
+
+\subsection{Theory \& reform}
+
+\transitionslide{Theory: naive responses backfire}{The obvious fix \textemdash{} ``just allow more training'' \textemdash{} can destroy welfare.}
+
+% ---------- YANG: SCARCE REGIME ----------
+\begin{frame}{When data is scarce, generous fair use \alert{harms} AI development}
+\vspace{0.2cm}
+\begin{itemize}
+\item \textbf{Generous fair use} ($f \to 0$): kills creator incentives $\rightarrow$ \alert{no human content} for training $\rightarrow$ model improvement stalls. \emph{(Prop.~10)}
+\item \textbf{Strict fair use} ($f$ too large): the AI company \alert{abandons model improvement} entirely. \emph{(Prop.~11)}
+\item \textbf{A moderate $f$} maximizes model quality $X_2$, social welfare, and consumer surplus.
+\end{itemize}
+\vspace{0.4cm}
+\begin{block}{The dynamic problem}
+A copyright doctrine welfare-optimal in 2020 (data-abundant) becomes welfare-destroying once pre-existing data is exhausted (data-scarce, $Q_0\!=\!0$) \textemdash{} the regime Longpre et al.\ document we are entering.
+\end{block}
+\vspace{0.1cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Propositions 10\textendash 11; Figure~7.}
+\end{flushright}
+\end{frame}
+
+% ---------- YANG: JOINT DESIGN ----------
+\begin{frame}{Strong AI-copyrightability flips fair use from helpful to harmful}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.0cm}>{\RaggedRight\arraybackslash}p{8.4cm}@{}}
+\toprule
+\textbf{AI-copyrightability $\phi$} & \textbf{Effect of generous fair use on AI development} \\
+\midrule
+\textbf{Weak} & \textcolor{Teal}{\textbf{Promotes}} development \\
+& \footnotesize creators still produce human content for training \\
+\midrule
+\textbf{Strong} & \alert{\textbf{Hinders}} development \\
+& \footnotesize too few human creators $\rightarrow$ training data dries up \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+$X_2$ is \alert{inverted-U} in $\phi$ when data is scarce \emph{(Prop.~12)}. The two policy levers cannot be designed independently.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Figure~9 \& Corollary~2.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{A skeptic would say the closing web is rhetorical, not real}
+\vspace{0.1cm}
+\textbf{The objection.} If half the bots ignore strict directives (Kim), if robots.txt is not legally binding, if frontier labs cut bilateral licenses, then ``the web is closing'' is a story about polite, compliant labs \textemdash{} not about training in practice.\\[0.4cm]
+\textbf{The response.}
+\begin{itemize}
+\item \alert{Compliant labs are the regulated mainstream}: ClaudeBot, GPTBot and Amazonbot all hit \textbf{1.000} on disallow-all (Kim Table~6). Restrictions therefore bite hardest on the firms regulators can actually reach.
+\item \alert{Spoofing is small but selective}: $<$0.1\% of traffic is spoofed, yet spoofed bots show ``little respect for robots.txt'' (Kim Table~9, Fig.~11) \textemdash{} a perverse-incentive layer above the consent system.
+\item \alert{The four pillars are joint constraints}: even if signaling and compliance fail, the supply (Fletcher) and legal (Cooper, Yang) pillars still bind. Ignoring robots.txt does not make a \$1.5B recovery go away.
+\end{itemize}
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Restoring a functioning data commons requires aligning four levers}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.0cm}>{\RaggedRight\arraybackslash}p{4.0cm}>{\RaggedRight\arraybackslash}p{5.4cm}@{}}
+\toprule
+\textbf{Lever} & \textbf{Source} & \textbf{Concrete reform} \\
+\midrule
+Consent signaling & Longpre; Kim & Successor to REP-1995: machine-readable, granular, use-specific \\
+Compliance & Kim & Legally binding obligations on identified crawlers \\
+Premium supply & Fletcher; Cooper & Collective licensing / structured remuneration \\
+Joint copyright design & Yang; Cooper & Set fair use $f$ and AI-copyrightability $\phi$ jointly per data regime \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Each lever necessary; none sufficient on its own.}
+\end{flushright}
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{The web is not running out of data.}}\\[0.8cm]
+{\huge\bfseries\textcolor{SoftWhite}{It is running out of \alert{consent}.}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ============================================================
+%  DEEP DIVE 4: PRODUCTIVITY GAP
+% ============================================================
+
+\section{Deep Dive 4: The Productivity Gap}
+
+% Section opener
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{Deep Dive 4}}\\[0.4cm]
+{\Huge\bfseries\textcolor{DeepNavy}{The Productivity Gap}}\\[0.3cm]
+{\large\textcolor{WarmGray}{Why GenAI's 80\% Exposure Yields a 1.56\% Macro Forecast}}\\[1.0cm]
+\footnotesize\textcolor{WarmGray}{%
+Eloundou et al.\ (2024), \emph{Science} 384, 1306 \quad\textbar\quad
+Noy \& Zhang (2023), \emph{Science} 381, 187\\
+Acemoglu (2025), \emph{Economic Policy} 40(121) \quad\textbar\quad
+Agrawal, Gans \& Goldfarb (2025), NBER ETAI\\
+Demirci, Hannane \& Zhu (2025), WP \quad\textbar\quad
+Goldberg \& Lam (2026), Stanford GSB / UCLA}
+\end{center}
+\vfill
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{80\% \quad\textemdash\quad 1.56\%}}\\[0.6cm]
+{\Large\textcolor{DeepNavy}{Eight in ten US workers have $\geq$10\% of their tasks LLM-exposed.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{The 10-year GDP gain is bounded at \alert{1.56\%}.}}\\[0.2cm]
+{\Large\textcolor{DeepNavy}{Both numbers are right.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Eloundou et al.\ (2024), Fig.~2; Acemoglu (2025), Table~1, p.~51.}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{Three pieces of math separate exposure from growth}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{5.0cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{Question} & \textbf{Number} \\
+\midrule
+\textbf{Exposure} & What share of tasks could AI touch? & 80\% workers, 4.6\% of GDP \\
+\textbf{Lab gain} & How fast/better does AI make a task? & $-$0.8 SD time, $+$0.4 SD grade \\
+\textbf{Macro envelope} & Hulten: $d\ln$TFP $= \bar\pi \times s$ & $\leq$ 0.66\% TFP / 1.56\% GDP \\
+\textbf{Market reality} & Where does the math actually hit? & Narrow sectors, sharp falls \\
+\textbf{Theory} & Who gets displaced first? & Routine, where $\eta_{AI} \le 1/q^2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+{\footnotesize Each row pins down one paper. Read together, they explain why the lab is loud and the macro is quiet.}
+\end{frame}
+
+\subsection{Headline numbers}
+
+\transitionslide{The headline numbers}{Big exposure, big lab gains, small macro envelope.}
+
+% ---------- ELOUNDOU ----------
+\begin{frame}{LLM exposure rises with wages \textemdash{} reversing prior automation's bias}
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.4cm}p{2.6cm}p{2.6cm}p{2.6cm}@{}}
+\toprule
+\textbf{Job zone} & \textbf{Median income} & \textbf{Mean exposure} & \textbf{Share $>$50\%} \\
+\midrule
+1 (no prep) & \$30{,}230 & 0.06 & 0.0\% \\
+2 & \$38{,}215 & 0.16 & 6.1\% \\
+3 & \$54{,}815 & 0.26 & 10.6\% \\
+\textbf{4 (bachelor's)} & \textbf{\$77{,}345} & \alert{\textbf{0.47}} & \alert{\textbf{34.5\%}} \\
+5 (master's$+$) & \$81{,}980 & 0.43 & 26.5\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{34 occupations have zero exposed tasks} \textemdash{} all manual: roofers, dishwashers, slaughterers, pile-driver operators. Only \alert{1.86\%} of all 19{,}265 tasks are fully automatable (T4).\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Eloundou et al.\ (2024), Tables~1, 5, 8\textendash 9; metric is $E1+0.5\!\cdot\!E2$.}
+\end{flushright}
+\end{frame}
+
+% ---------- NOY ----------
+\begin{frame}{In the lab, ChatGPT cuts time 0.8 SD and raises grades 0.4 SD}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}p{2.4cm}p{2.4cm}p{1.4cm}@{}}
+\toprule
+\textbf{Outcome ($\Delta$ post$-$pre)} & \textbf{ITT (OLS)} & \textbf{TOT (IV)} & \textbf{$N$} \\
+\midrule
+Time on task (minutes) & \alert{$-$10.84}$^{***}$ & \alert{$-$16.51}$^{***}$ & 346 \\
+Grade (1\textendash 7 scale) & \textcolor{Teal}{\textbf{$+$0.65}}$^{***}$ & \textcolor{Teal}{\textbf{$+$0.95}}$^{***}$ & 1{,}135 \\
+Job satisfaction (1\textendash 10) & $+$1.16$^{***}$ & $+$1.93$^{***}$ & 449 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+Drafting time \alert{halves}; editing time \alert{doubles}. ChatGPT operates as a \emph{drafting substitute}, not an ideation aid \textemdash{} 58 of 173 users submitted output \textbf{unedited}.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Noy \& Zhang (2023), pre-registered RCT, $N\!=\!450$ Prolific, 5 white-collar tasks; SI Tables~S.1\textendash S.2.}
+\end{flushright}
+\end{frame}
+
+% ---------- ACEMOGLU ----------
+\begin{frame}{Hulten arithmetic bounds 10-year TFP gain at 0.66\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.6cm}p{2.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Value} & \textbf{Source} \\
+\midrule
+Wage-bill share exposed & 20\% & Eloundou (2024) \\
+$\times$ cost-effectively automatable & 23\% & Svanberg et al.\ (2024) \\
+\textbf{GDP share affected} & \textbf{$=$ 4.6\%} & --- \\
+Avg.\ overall cost savings $\bar\pi$ & 14.4\% & Noy/Brynjolfsson \\
+\textbf{$d\ln$ TFP $= s \times \bar\pi$} & \alert{\textbf{$=$ 0.66\%}} & p.~41 \\
+GDP gain (capital response, 10 yrs) & \alert{$\leq$ 1.56\%} & Table~1, p.~51 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{An order of magnitude below Goldman's 7\% and McKinsey's 1.5\textendash 3.4 pp/yr} \textemdash{} those forecasts cannot be reconciled with task-level estimates inside Hulten.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Acemoglu (2025), eq.~14 (p.~28); Table~1 cols.~3 \& 7 (p.~51).}
+\end{flushright}
+\end{frame}
+
+\subsection{Where the math hits}
+
+\transitionslide{Where the math hits}{The macro is small. The dislocations are not.}
+
+% ---------- DEMIRCI ----------
+\begin{frame}{ChatGPT cut writing-prone freelance posts 21\% within 8 months}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.8cm}p{2.8cm}p{2.2cm}p{1.6cm}@{}}
+\toprule
+\textbf{Cluster} & \textbf{DiD coef.\ (SE)} & \textbf{\% change} & \textbf{Shock} \\
+\midrule
+Writing & $-$0.362$^{***}$ (0.054) & \alert{$-$30.4\%} & ChatGPT \\
+Software / web & $-$0.231$^{**}$ (0.054) & $-$20.6\% & ChatGPT \\
+Engineering & $-$0.110 (0.058) & $-$10.4\% & ChatGPT \\
+Graphic design & $-$0.204$^{**}$ (0.048) & $-$18.5\% & Image AI \\
+3D modeling & $-$0.169$^{**}$ (0.048) & $-$15.6\% & Image AI \\
+\bottomrule
+\end{tabular}
+\end{center}
+Surviving employers post \alert{higher budgets} ($+$5.7\%), \alert{more complex jobs} ($+$2.2\%), \alert{more bids} ($+$8.6\%) \textemdash{} the routine layer is skimmed off, not the complex one.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Demirci et al.\ (2025), Tables~2\textendash 3, D1; $N\!=\!1{,}218{,}463$ posts.}
+\end{flushright}
+\end{frame}
+
+% ---------- GOLDBERG ----------
+\begin{frame}{On Adobe Stock, GenAI more than doubled supply \alert{and} cut non-GenAI artists 29\%}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.0cm}p{2.8cm}p{2.8cm}@{}}
+\toprule
+\textbf{Outcome (Post 7$+$ mth $\times$ Treated)} & \textbf{All images} & \textbf{Non-GenAI} \\
+\midrule
+Production (Poisson APE) & \textcolor{Teal}{\textbf{$+$135.9\%}}$^{***}$ & \alert{$-$14.7\%}$^{***}$ \\
+Active artists & \textcolor{Teal}{\textbf{$+$47.1\%}}$^{***}$ & \alert{$-$29.0\%}$^{***}$ \\
+Sales (Poisson APE) & \textcolor{Teal}{\textbf{$+$82.0\%}}$^{***}$ & \alert{$-$28.2\%}$^{***}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Expansion and crowd-out coexist. Non-GenAI artists differentiate \textemdash{} spreading in embedding space where GenAI clusters do not yet reach. Embedding quality of remaining non-GenAI rises $+$1.8\%$^{***}$.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Goldberg \& Lam (2026), Tables~2\textendash 4; 1{,}719 markets, $N\!=\!55{,}008$.}
+\end{flushright}
+\end{frame}
+
+\subsection{Theory closes the gap}
+
+\transitionslide{Theory closes the gap}{Routine is fully displaced; geniuses retreat to the frontier.}
+
+% ---------- AGRAWAL ----------
+\begin{frame}{Routine workers are fully displaced when AI's curvature $\eta_{AI} \leq 1/q^2$}
+\begin{center}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.6cm}>{\RaggedRight\arraybackslash}p{3.0cm}>{\RaggedRight\arraybackslash}p{3.0cm}>{\RaggedRight\arraybackslash}p{2.6cm}@{}}
+\toprule
+\textbf{Regime} & \textbf{Routine} & \textbf{Human genius} & \textbf{AI genius} \\
+\midrule
+Pre-AI & Interior $[x_0\!-\!q,\,x_0\!+\!q]$ & By $AA(x)$ peak & --- \\
+Short-run AI & Unchanged & Pushed outward & Closer $+$ unanswered \\
+\textbf{Long-run, $\eta_{AI}\!\leq\!1/q^2$} & \alert{\textbf{Fully displaced}} & \textbf{Frontier only} & Routine band \\
+Long-run, $\eta_{AI}\!>\!1/q^2$ & Narrow edge band & Frontier & Interior \\
+\bottomrule
+\end{tabular}
+\end{center}
+The displacement condition is \alert{a geometry inequality}, not a productivity threshold: routine's linear value loses wherever AI's quadratic curvature is shallow enough.\\
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Agrawal, Gans \& Goldfarb (2025), Propositions~1\textendash 3.}
+\end{flushright}
+\end{frame}
+
+\subsection{Devil's advocate \& synthesis}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{A skeptic says: the macro estimate is too low, the J-curve is coming}
+\textbf{The objection.}\quad
+The 1.56\% ceiling counts only existing tasks at today's $\sim$14\% cost savings. Goldman's 7\% and McKinsey's 1.5\textendash 3.4 pp/yr could be right if AI generates \alert{new tasks} the rubric does not see.\\[0.3cm]
+\textbf{The response.}
+\begin{itemize}
+\item \alert{Adoption is a headwind, not a tailwind.} Only 1.5\% of US firms had invested in AI by 2019 \textemdash{} 10-year cost reductions are likely \emph{over}stated.
+\item \alert{New tasks have a sign problem.} Acemoglu's bad-task calibration: AI-enabled social media $+$ IT-security $\approx$ 2\% of GDP, ratio of harm-to-benefit $-19/53$. Apparent $+$2\% GDP coexists with $-$0.72\% welfare.
+\item \alert{Micro converges with macro.} Demirci's 21\% drop and Goldberg's 29\% artist exit are \emph{narrow} \textemdash{} exactly what Hulten predicts when 4.6\% of GDP is exposed at $\bar\pi\!\approx\!14\%$.
+\end{itemize}
+\end{frame}
+
+% ---------- SYNTHESIS ----------
+\begin{frame}{Bigger gains require new pro-worker tasks \textemdash{} not better chatbots}
+\begin{center}
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.4cm}>{\RaggedRight\arraybackslash}p{4.4cm}>{\RaggedRight\arraybackslash}p{4.6cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{What current AI delivers} & \textbf{What would lift the ceiling} \\
+\midrule
+Exposure & Broad, progressive (Eloundou) & New-task exposure measures \\
+Lab gain & Drafting substitution (Noy) & Expertise provision: nurses, electricians \\
+Macro & 0.66\% TFP, 1.56\% GDP & New pro-worker tasks Hulten ignores \\
+Market & Routine skimmed (Demirci, Goldberg) & Differentiation niches survive \\
+Theory & Humans $\to$ frontier (Agrawal) & $\eta_{AI}\!>\!1/q^2$: complement, not substitute \\
+\bottomrule
+\end{tabular}
+\end{center}
+The Hulten ceiling is not a law of nature \textemdash{} it is \alert{what current AI is built to do}.
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{The macro is small.}}\\[0.6cm]
+{\huge\bfseries\textcolor{SoftWhite}{The dislocations are \alert{not}.}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ============================================================
+%  DEEP DIVE 5: JOINT COPYRIGHT
+% ============================================================
+
+\section{Deep Dive 5: Joint Copyright Design}
+
+% Section opener
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\large\textcolor{WarmGray}{Deep Dive 5}}\\[0.4cm]
+{\Huge\bfseries\textcolor{DeepNavy}{Fair Use and AI-Copyrightability}}\\[0.2cm]
+{\Huge\bfseries\textcolor{DeepNavy}{Must Be Designed Jointly}}\\[0.4cm]
+{\large\textcolor{WarmGray}{Synthesizing Yang \& Zhang (2024) and Cooper et al.\ (2025)}}\\[0.8cm]
+\footnotesize\textcolor{WarmGray}{%
+Yang \& Zhang (2024), \emph{arXiv:2402.17801v2} \quad\textbar\quad
+Cooper, Martens, Peukert, \& Stocker (2025),\\ \emph{Review of Network Economics} 24(3): 161--176}
+\end{center}
+\vfill
+\end{frame}}
+
+% ---------- OPENING PROVOCATION ----------
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{DeepRed}{\$1.5 billion}}\\[0.3cm]
+{\large\textcolor{DeepNavy}{the largest copyright recovery in history}}\\[0.6cm]
+{\large\textcolor{WarmGray}{paid by one AI lab \textemdash{} for downloads, not training.}}\\[1.2cm]
+{\Large\textcolor{DeepNavy}{And the doctrine is still unsettled.}}
+\end{center}
+\vfill
+\begin{flushright}
+\scriptsize\textcolor{WarmGray}{Bartz v.\ Anthropic; Cooper et al.\ 2025, p.~165}
+\end{flushright}
+\end{frame}
+
+% ---------- FRAMEWORK ----------
+\begin{frame}{GenAI breaks copyright at both input and output stages}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.2cm}>{\RaggedRight\arraybackslash}p{4.8cm}>{\RaggedRight\arraybackslash}p{5.4cm}@{}}
+\toprule
+\textbf{Stage} & \textbf{Core question} & \textbf{Status} \\
+\midrule
+\textbf{Input} & Can copyrighted works be scraped for training? & Unsettled: fair use (US), TDM \& opt-outs (EU) \\
+\textbf{Output} & Are AI-assisted works copyrightable? & Disparate thresholds: US, EU, China \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Sections 3.1--3.3.}
+\end{flushright}
+\end{frame}
+
+\subsection{Input stage: training data}
+
+% ---------- INPUT EVIDENCE ----------
+\begin{frame}{Two-thirds of AI training datasets carry wrong or missing licenses}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{$\sim$65\%} of datasets on Hugging Face \& PapersWithCode have missing, incorrect, or ambiguous license metadata.\\
+{\footnotesize\textcolor{WarmGray}{(Longpre et al.\ 2024a, cited in Cooper 2025, p.~167)}}
+\item In \textbf{LAION-5B} (largest public image set): fewer than \textbf{1 in 1{,}000} datapoints carry license metadata.
+\item \textbf{10 website domains} account for \textbf{23\%} of LAION's $\sim$2 billion images \textemdash{} supply is concentrated, not representative.
+\item Opted-out vs.\ licensed images depict \alert{semantically different concepts} and differ in technical quality.\\
+{\footnotesize\textcolor{WarmGray}{(Shcherbakov et al.\ 2025, cited in Cooper 2025, pp.~167, 171)}}
+\end{itemize}
+\end{frame}
+
+% ---------- CASE LAW ----------
+\begin{frame}{The two leading US rulings disagree on why training is fair use}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{3.0cm}>{\RaggedRight\arraybackslash}p{9.4cm}@{}}
+\toprule
+\textbf{Alsup (Anthropic)} & Initial book downloads \alert{infringing} $\rightarrow$ \textbf{\$1.5B} recovery; subsequent training use ruled fair use. \\
+\midrule
+\textbf{Chhabria (Meta)} & Training fair use \emph{only because} plaintiffs ``made the wrong arguments''; judge believes training would \alert{generally be illegal}. \\
+\midrule
+\textbf{USCO (2025b)} & Doubts fair use applies when AI outputs \alert{compete in existing markets} for training works. \\
+\midrule
+\textbf{EU \textemdash{} Hamburg} & LAION ruling: \alert{terms-of-service opt-outs} likely enforceable. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), pp.~165--166. Dozens of US suits remain pending.}
+\end{flushright}
+\end{frame}
+
+\subsection{The dynamic problem}
+
+\transitionslide{The dynamic problem}{What is welfare-maximizing today can be welfare-destroying tomorrow.}
+
+% ---------- YANG ABUNDANT ----------
+\begin{frame}{When training data is abundant, generous fair use maximizes \emph{every} welfare metric}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{5.6cm}p{5.6cm}@{}}
+\toprule
+\textbf{Welfare variable} & \textbf{Maximized by} \\
+\midrule
+Model quality $X_2$ & $f = 0 \;\rightarrow\; X_2 = 1$ \\
+AI content quantity & $f = 0$ \\
+Creator income & $f = 0$ \\
+Consumer surplus & $f = 0$ (all tested $X_1, k, M$) \\
+Social welfare & $f = 0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\textbf{Optimal joint policy:} $\{f=0,\ \phi=1\}$ \textemdash{} generous fair use \emph{plus} full AI-copyrightability.\\[0.2cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Proposition 7 \& Corollary 2; data-abundant regime, $Q_0 \to \infty$.}
+\end{flushright}
+\end{frame}
+
+% ---------- YANG SCARCE ----------
+\begin{frame}{When training data is scarce, generous fair use \alert{harms} AI development}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{Generous fair use} ($f \to 0$): kills creator incentives $\rightarrow$ \alert{no human content} for training $\rightarrow$ model improvement stalls. \emph{(Prop.~10)}
+\item \textbf{Strict fair use} ($f$ too large): AI company \alert{abandons model improvement} entirely. \emph{(Prop.~11)}
+\item \textbf{A moderate $f$ maximizes} model quality $X_2$, social welfare, and consumer surplus.
+\end{itemize}
+\vspace{0.5cm}
+\begin{block}{The central novel finding}
+A copyright doctrine welfare-optimal in 2020 (data-abundant) becomes welfare-destroying once pre-existing data is exhausted (data-scarce, $Q_0 = 0$).
+\end{block}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Propositions 10--11.}
+\end{flushright}
+\end{frame}
+
+% ---------- INTERACTION (KEY) ----------
+\begin{frame}{Strong AI-copyrightability flips fair use from helpful to harmful}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{4.4cm}>{\RaggedRight\arraybackslash}p{8.4cm}@{}}
+\toprule
+\textbf{AI-copyrightability $\phi$} & \textbf{Effect of generous fair use on AI development} \\
+\midrule
+\textbf{Weak} & \textcolor{Teal}{\textbf{Promotes}} development \\
+& \footnotesize creators still produce human content for training \\
+\midrule
+\textbf{Strong} & \alert{\textbf{Hinders}} development \\
+& \footnotesize too few creators $\rightarrow$ training data dries up \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+$X_2$ is \alert{inverted-U} in $\phi$ when data is scarce \emph{(Prop.~12)}. The two policies cannot be designed independently.\\[0.3cm]
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Figure 9 \& Proposition 12.}
+\end{flushright}
+\end{frame}
+
+\subsection{The output side}
+
+\transitionslide{The output side}{Three jurisdictions, three verdicts, one work.}
+
+% ---------- AUTHORSHIP DIVERGENCE ----------
+\begin{frame}{Three jurisdictions reach three verdicts on the same AI-assisted work}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{2.0cm}>{\RaggedRight\arraybackslash}p{3.4cm}>{\RaggedRight\arraybackslash}p{6.6cm}@{}}
+\toprule
+\textbf{Jurisdiction} & \textbf{Ruling} & \textbf{Threshold} \\
+\midrule
+\textbf{China} \emph{(Li v.\ Liu, 2023)} & \textcolor{Teal}{\textbf{Copyrightable}} & ``Intellectual investment'' \& ``personalized expression'' via prompting \\
+\midrule
+\textbf{US} \emph{(USCO 2025a)} & \alert{\textbf{Not copyrightable}} & ``All current-state prompting outputs'' lack sufficient human control \\
+\midrule
+\textbf{EU} \emph{(Czech)} & \alert{\textbf{Not copyrightable}} & ``Plaintiff did not personally create the work'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Section 3.2, pp.~168--170.}
+\end{flushright}
+\end{frame}
+
+% ---------- DETECTION ----------
+\begin{frame}{Disclosure cannot enforce the AI / non-AI line \textemdash{} and creates perverse incentives}
+\vspace{0.3cm}
+\begin{itemize}
+\item \textbf{The ``Old Hard Drive Debacle''} \emph{(Cooper 2025)}: artists must log every GenAI use \alert{solely to strip themselves of rights} $\rightarrow$ strong incentive to \emph{deny} AI use.
+\item \textbf{No robust detection tool} exists for whether \textemdash{} let alone \emph{which elements} of \textemdash{} a work used GenAI.\\
+{\footnotesize\textcolor{WarmGray}{(10+ sources on watermarking limits cited in Cooper 2025)}}
+\item \textbf{Convergence problem:} search-engine and AI-training crawlers are technologically indistinguishable; blocking one blocks the other.
+\end{itemize}
+\vspace{0.3cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Cooper et al.\ (2025), Section 3.2, pp.~169--170, 172.}
+\end{flushright}
+\end{frame}
+
+% ---------- INFRINGEMENT + SYNTHETIC ----------
+\begin{frame}{Synthetic data is no escape \textemdash{} model collapse and copy-mining await}
+\vspace{0.2cm}
+\begin{itemize}
+\item GenAI produces \alert{near-identical copies} of protected works even with developer safeguards.\\
+{\footnotesize\textcolor{WarmGray}{(Cooper \& Grimmelmann 2025)}}
+\item US ``Blurred Lines'' precedent: \alert{weak similarity thresholds} mean outputs need not be close replicas to infringe.
+\item \textbf{Copy-mining incentive}: mass-generate to claim maximum rights, mining out the latent space between existing works.\\
+{\footnotesize\textcolor{WarmGray}{(Cooper 2025; Lemley 2024)}}
+\item \textbf{Synthetic data fails as a fix:} depends on real-data quality, cannot generate genuine novelty, recursive training risks \alert{model collapse}.\\
+{\footnotesize\textcolor{WarmGray}{(Shumailov et al.\ 2024)}}
+\end{itemize}
+\end{frame}
+
+\subsection{Devil's advocate \& policy optimum}
+
+% ---------- POLICY OPTIMA ----------
+\begin{frame}{Optimal policy depends on objective \emph{and} data regime \textemdash{} divergence is rational}
+\vspace{0.2cm}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\columncolor{LightGray}}p{5.4cm}p{3.6cm}p{3.6cm}@{}}
+\toprule
+\textbf{Regulator's objective} & \textbf{Optimal $\phi$} & \textbf{Optimal $f$} \\
+\midrule
+Consumer surplus & Lowest & More generous \\
+Social welfare \,/\, AI development & Substantially higher & \alert{Stricter} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+\begin{itemize}
+\item Fair use is \alert{more sensitive} than $\phi$ to data availability ($Q_0$), training efficiency ($k$), and market growth ($M$).
+\item Predicted alignment: \textbf{US / China} $\rightarrow$ AI growth; \textbf{EU} $\rightarrow$ consumer welfare $\rightarrow$ persistent jurisdictional divergence.
+\end{itemize}
+\vspace{0.2cm}
+\begin{flushright}
+\footnotesize\textcolor{WarmGray}{Yang \& Zhang (2024), Figure 10; Cooper et al.\ (2025), citing Peukert 2025a.}
+\end{flushright}
+\end{frame}
+
+% ---------- DEVIL'S ADVOCATE ----------
+\begin{frame}{A skeptic would say the model is too stylized to drive real policy}
+\vspace{0.2cm}
+\textbf{The objection.} Yang \& Zhang assume uniform skill, competitive AI markets, binary content quality, and a single regulator. Cooper et al.\ provide no original empirical evidence.\\[0.4cm]
+\textbf{The response.}
+\begin{itemize}
+\item Yang \& Zhang's \alert{regime-dependence result} (abundant vs.\ scarce) is robust across all numerical examples and does not hinge on the uniform-skill closed form.
+\item The Cooper primer's job is not estimation \textemdash{} it identifies \alert{empirical gaps} (representativeness of opt-out data, creator-behavior responses, output memorization rates) for the next generation of work.
+\item Both papers converge on the same conclusion from independent methods: \alert{copyright doctrine cannot be optimized one lever at a time, in one jurisdiction, at one moment in time.}
+\end{itemize}
+\end{frame}
+
+% ---------- CLOSING TAKEAWAY ----------
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\huge\bfseries\textcolor{Gold}{Joint. Dynamic. Cross-border.}}\\[0.8cm]
+{\Large\textcolor{SoftWhite}{Fair use and AI-copyrightability are economically linked.}}\\[0.3cm]
+{\Large\textcolor{SoftWhite}{Designing them in isolation \alert{destroys} welfare once data runs scarce.}}
+\end{center}
+\vfill
+\end{frame}}
+
+% ============================================================
+%  CLOSING -- BACK TO TIER 1
+% ============================================================
+
+\section*{Closing}
+\addcontentsline{toc}{section}{Closing}
+
+{\setbeamercolor{normal text}{fg=SoftWhite,bg=DeepNavy}
+\begin{frame}[plain]
+\vfill
+\begin{center}
+{\Huge\bfseries\textcolor{Gold}{Four crises. One feedback loop.}}\\[0.8cm]
+{\Large\textcolor{SoftWhite}{Trust, displacement, consent, growth \textemdash{} bound by a single}}\\[0.2cm]
+{\Large\textcolor{SoftWhite}{policy surface no jurisdiction has yet drawn.}}
+\end{center}
+\vfill
+\end{frame}}
+
+\end{document}
